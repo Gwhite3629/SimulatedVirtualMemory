@@ -3,6 +3,7 @@
 #include <errno.h>
 #include <stdio.h>
 #include <string.h>
+#include <stdint.h>
 
 #include "utils.h"
 #include "memory.h"
@@ -238,46 +239,95 @@ inline heap_t *grow_kheap(heap_t *h)
     #if WINDOWS
         temp = (void *)_aligned_malloc(h_size + h->alignment, h->alignment);
         VALID(temp, MEM_CODE, ALLOCATION_ERROR);
-	    memset(temp, 0, 2*h->alignment);
+	    memset(temp, 0, h_size + h->alignment);
     #else
         temp = (void *)aligned_alloc(h->alignment, h_size + h->alignment);
         VALID(temp, MEM_CODE, ALLOCATION_ERROR);
-	    memset(temp, 0, 2*h->alignment);
+	    memset(temp, 0, h_size + h->alignment);
     #endif
 
     int MEM_OFFSET = (char *)temp - (char *)h->regions[0]->base_addr;
 
     h->regions[0]->base_addr = temp;
+
+    heap_t temp_heap;
+    temp_heap.alignment = h->alignment;
+    temp_heap.n_regions = h->n_regions;
+    temp_heap.regions = h->regions;
+    strcpy(temp_heap.name, h->name);
+    memcpy(h->regions[0]->chunks[2]->addr, &temp_heap, HEAP_INFO_SIZE);
+
     for (int i = 0; i < h->regions[0]->n_chunks; i++)
     {
-        h->regions[0]->chunks[i]->base = (char *)h->regions[0]->chunks[i]->base + MEM_OFFSET;
-        h->regions[0]->chunks[i]->addr = (char *)h->regions[0]->chunks[i]->addr + MEM_OFFSET;
+        smart_ptr t_ptr;
+        t_ptr.addr = (char *)h->regions[0]->chunks[i]->addr + MEM_OFFSET;
+        t_ptr.base = (char *)h->regions[0]->chunks[i]->base + MEM_OFFSET;
+        strcpy(t_ptr.name, h->regions[0]->chunks[i]->name);
+        t_ptr.size = h->regions[0]->chunks[i]->size;
+        t_ptr.flag = h->regions[0]->chunks[i]->flag;
         h->regions[0]->chunks[i] = (smart_ptr *)((char *)h->regions[0]->chunks[i] + MEM_OFFSET);
+        memcpy(h->regions[0]->chunks[i], &t_ptr, CHUNK_INFO_SIZE);
     }
-    h->regions[0]->chunks = (smart_ptr **)((char *)h->regions[0]->chunks + MEM_OFFSET);
+    region_t temp_region;
+    temp_region.alloc_size = h->regions[0]->alloc_size;
+    temp_region.base_addr = temp;
+    temp_region.n_chunks = h->regions[0]->n_chunks;
+    strcpy(temp_region.name, h->regions[0]->name);
+    temp_region.used_size = h->regions[0]->used_size;
+    temp_region.chunks = (smart_ptr **)((char *)h->regions[0]->chunks + MEM_OFFSET);
     h->regions[0] = (region_t *)((char *)h->regions[0] + MEM_OFFSET);
+    memcpy(h->regions[0], &temp_region, REGION_INFO_SIZE);
     h->regions = (region_t **)((char *)h->regions + MEM_OFFSET);
 
-    memcpy(temp, h_base, h_size);
-    
-    old_tail = h->regions[0]->chunks[0]->addr;
-    h->regions[0]->chunks[0]->addr = (char *)h->regions[0]->chunks[0]->addr + ALIGN;
-    for (int i = 0; i < h->regions[0]->n_chunks; i++)   
-    {
+    memcpy(temp, h_base, h_size); // Copy all of kheap
+
+    smart_ptr arr_ptr;
+
+    strcpy(arr_ptr.name, h->regions[0]->chunks[0]->name);
+    arr_ptr.addr = h->regions[0]->chunks[0]->addr;
+    arr_ptr.base = h->regions[0]->chunks[0]->base;
+    arr_ptr.size = h->regions[0]->chunks[0]->size;
+    arr_ptr.flag = h->regions[0]->chunks[0]->flag;
+
+    memcpy(((char *)h->regions[0]->chunks + ALIGN),
+            (char *)h->regions[0]->chunks,
+            CHUNK_INFO_SIZE); // Copy chunk smart ptr
+
+    memcpy(((char *)h->regions[0]->chunks + CHUNK_INFO_SIZE + ALIGN),
+            ((char *)h->regions[0]->chunks + CHUNK_INFO_SIZE),
+            5*CHUNK_ARR); // Copy array of chunk pointers
+
+    for (int i = 1; i < h->regions[0]->n_chunks; i++) {
         h->regions[0]->chunks[i] = (smart_ptr *)((char *)h->regions[0]->chunks[i] + ALIGN);
     }
-    memcpy((smart_ptr **)((char *)old_tail + ALIGN), (smart_ptr **)old_tail, 5*CHUNK_ARR);
-    memcpy((smart_ptr *)((char *)old_tail - CHUNK_INFO_SIZE + ALIGN), (smart_ptr *)((char *)old_tail - CHUNK_INFO_SIZE),CHUNK_INFO_SIZE);
-    memset(((char *)old_tail - CHUNK_INFO_SIZE), 0, 5*CHUNK_ARR + CHUNK_INFO_SIZE);
+
+    h->regions[0]->chunks[0]->addr = (char *)h->regions[0]->chunks[0]->addr + ALIGN;
+    memcpy(h->regions[0]->chunks[0], &arr_ptr, CHUNK_INFO_SIZE);
+
+    h->regions[0]->chunks = (smart_ptr **)((char *)h->regions[0]->chunks + ALIGN);
+
+    // Clear old memory
+    memset(((char *)h_base + h_size - (5*CHUNK_ARR + CHUNK_INFO_SIZE)), 0, 5*CHUNK_ARR + CHUNK_INFO_SIZE);
+
     h->regions[0]->alloc_size += ALIGN;
 
     h = (heap_t *)h->regions[0]->chunks[2]->addr;
 
     free(h_base);
 
-    #if LOGGING
+    /*#if LOGGING
         log(h);
-    #endif
+    #endif*/
+
+    fprintf(log_file, "Heap: %s\n", h->name);
+    for (int iter = 0; iter < h->n_regions; iter++) {
+        fprintf(log_file, "%s // %p : %d : %d : %d\n", h->regions[iter]->name, h->regions[iter]->base_addr, h->regions[iter]->alloc_size, h->regions[iter]->used_size, h->regions[iter]->n_chunks);
+        for (int it = 0; it < h->regions[iter]->n_chunks; it++) {
+            fprintf(log_file, "\t%12s // %12s @ %p : %d\n", h->regions[iter]->chunks[it]->name, stat_names[h->regions[iter]->chunks[it]->flag], h->regions[iter]->chunks[it]->addr, h->regions[iter]->chunks[it]->size);
+        }
+    }
+    fprintf(log_file, "\n\n");;
+
 
     return h;
 
