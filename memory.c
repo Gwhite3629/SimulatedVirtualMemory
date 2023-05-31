@@ -284,7 +284,7 @@ inline heap_t *grow_kheap(heap_t *h)
     smart_ptr arr_ptr;
 
     strcpy(arr_ptr.name, h->regions[0]->chunks[0]->name);
-    arr_ptr.addr = h->regions[0]->chunks[0]->addr;
+    arr_ptr.addr = h->regions[0]->chunks[0]->addr + ALIGN;
     arr_ptr.base = h->regions[0]->chunks[0]->base;
     arr_ptr.size = h->regions[0]->chunks[0]->size;
     arr_ptr.flag = h->regions[0]->chunks[0]->flag;
@@ -297,14 +297,10 @@ inline heap_t *grow_kheap(heap_t *h)
             ((char *)h->regions[0]->chunks + CHUNK_INFO_SIZE),
             5*CHUNK_ARR); // Copy array of chunk pointers
 
-    for (int i = 1; i < h->regions[0]->n_chunks; i++) {
-        h->regions[0]->chunks[i] = (smart_ptr *)((char *)h->regions[0]->chunks[i] + ALIGN);
-    }
-
-    h->regions[0]->chunks[0]->addr = (char *)h->regions[0]->chunks[0]->addr + ALIGN;
     memcpy(h->regions[0]->chunks[0], &arr_ptr, CHUNK_INFO_SIZE);
 
-    h->regions[0]->chunks = (smart_ptr **)((char *)h->regions[0]->chunks + ALIGN);
+    h->regions[0]->chunks[0] = (smart_ptr *)((char *)h->regions[0]->chunks[0] + ALIGN);
+    h->regions[0]->chunks = h->regions[0]->chunks[0]->addr;
 
     // Clear old memory
     memset(((char *)h_base + h_size - (5*CHUNK_ARR + CHUNK_INFO_SIZE)), 0, 5*CHUNK_ARR + CHUNK_INFO_SIZE);
