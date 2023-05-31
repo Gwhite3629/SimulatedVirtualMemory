@@ -1,0 +1,26 @@
+Heap: GLOBAL
+KHEAP // 0x4a49000 : 4096 : 315 : 5
+	   CHUNK_ARR //     RESERVED @ 0x4a49fd8 : 40
+	    KREG_PTR //     RESERVED @ 0x4a49026 : 38
+	   KHEAP_PTR //     RESERVED @ 0x4a49072 : 31
+	     REG_ARR //     RESERVED @ 0x4a490b7 : 16
+	  KHEAP_FREE //  UNALLOCATED @ 0x4a490ed : 3781
+HEAP // 0x4a4b000 : 4096 : 176 : 3
+	   CHUNK_ARR //     RESERVED @ 0x4a4bfe8 : 24
+	    REG1_PTR //     RESERVED @ 0x4a4b026 : 38
+	   HEAP_FREE //  UNALLOCATED @ 0x4a4b072 : 3920
+
+
+Heap: GLOBAL
+KHEAP // 0x4a4e000 : 4096 : 315 : 5
+	             //  UNALLOCATED @ (nil) : 0
+	    KREG_PTR //     RESERVED @ 0x4a4e026 : 38
+	   KHEAP_PTR //     RESERVED @ 0x4a4e072 : 31
+	     REG_ARR //     RESERVED @ 0x4a4e0b7 : 16
+	  KHEAP_FREE //  UNALLOCATED @ 0x4a4e0ed : 3781
+HEAP // 0x4a4b000 : 4096 : 176 : 3
+	   CHUNK_ARR //     RESERVED @ 0x4a4bfe8 : 24
+	    REG1_PTR //     RESERVED @ 0x4a4b026 : 38
+	   HEAP_FREE //  UNALLOCATED @ 0x4a4b072 : 3920
+
+

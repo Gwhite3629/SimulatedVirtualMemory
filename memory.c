@@ -265,11 +265,11 @@ inline heap_t *grow_kheap(heap_t *h)
         strcpy(t_ptr.name, h->regions[0]->chunks[i]->name);
         t_ptr.size = h->regions[0]->chunks[i]->size;
         t_ptr.flag = h->regions[0]->chunks[i]->flag;
-        h->regions[0]->chunks[i] = (smart_ptr *)((char *)h->regions[0]->chunks[i] + MEM_OFFSET);
-        memcpy(h->regions[0]->chunks[i], &t_ptr, CHUNK_INFO_SIZE);
+        h->regions[0]->chunks[i] = (smart_ptr *)((char *)h->regions[0]->chunks[i]->addr - CHUNK_INFO_SIZE);
+        memcpy((smart_ptr *)((char *)h->regions[0]->chunks[i]), &t_ptr, CHUNK_INFO_SIZE);
     }
     region_t temp_region;
-    temp_region.alloc_size = h->regions[0]->alloc_size;
+    temp_region.alloc_size = h->regions[0]->alloc_size + ALIGN;
     temp_region.base_addr = temp;
     temp_region.n_chunks = h->regions[0]->n_chunks;
     strcpy(temp_region.name, h->regions[0]->name);
@@ -283,29 +283,23 @@ inline heap_t *grow_kheap(heap_t *h)
 
     smart_ptr arr_ptr;
 
-    strcpy(arr_ptr.name, h->regions[0]->chunks[0]->name);
-    arr_ptr.addr = h->regions[0]->chunks[0]->addr + ALIGN;
-    arr_ptr.base = h->regions[0]->chunks[0]->base;
     arr_ptr.size = h->regions[0]->chunks[0]->size;
     arr_ptr.flag = h->regions[0]->chunks[0]->flag;
+    strcpy(arr_ptr.name, h->regions[0]->chunks[0]->name);
+    arr_ptr.addr = ((char *)temp + h->regions[0]->alloc_size) - 5*CHUNK_ARR;
+    arr_ptr.base = h->regions[0]->chunks[0]->base;
 
-    memcpy(((char *)h->regions[0]->chunks + ALIGN),
-            (char *)h->regions[0]->chunks,
+    h->regions[0]->chunks[0] = (smart_ptr *)((char *)temp + h->regions[0]->alloc_size - (5*CHUNK_ARR + CHUNK_INFO_SIZE));
+    h->regions[0]->chunks = (smart_ptr **)((char *)temp + h->regions[0]->alloc_size - (5*CHUNK_ARR));
+
+    memcpy(h->regions[0]->chunks[0],
+            &arr_ptr,
             CHUNK_INFO_SIZE); // Copy chunk smart ptr
-
-    memcpy(((char *)h->regions[0]->chunks + CHUNK_INFO_SIZE + ALIGN),
-            ((char *)h->regions[0]->chunks + CHUNK_INFO_SIZE),
-            5*CHUNK_ARR); // Copy array of chunk pointers
 
     memcpy(h->regions[0]->chunks[0], &arr_ptr, CHUNK_INFO_SIZE);
 
-    h->regions[0]->chunks[0] = (smart_ptr *)((char *)h->regions[0]->chunks[0] + ALIGN);
-    h->regions[0]->chunks = h->regions[0]->chunks[0]->addr;
-
     // Clear old memory
     memset(((char *)h_base + h_size - (5*CHUNK_ARR + CHUNK_INFO_SIZE)), 0, 5*CHUNK_ARR + CHUNK_INFO_SIZE);
-
-    h->regions[0]->alloc_size += ALIGN;
 
     h = (heap_t *)h->regions[0]->chunks[2]->addr;
 
