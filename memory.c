@@ -235,6 +235,7 @@ inline heap_t *grow_kheap(heap_t *h)
     void *h_base = h->regions[0]->base_addr;
     int h_size = h->regions[0]->alloc_size;
     void *old_tail;
+    smart_ptr *chunks[5];
 
     #if WINDOWS
         temp = (void *)_aligned_malloc(h_size + h->alignment, h->alignment);
@@ -253,11 +254,9 @@ inline heap_t *grow_kheap(heap_t *h)
     heap_t temp_heap;
     temp_heap.alignment = h->alignment;
     temp_heap.n_regions = h->n_regions;
-    temp_heap.regions = h->regions;
     strcpy(temp_heap.name, h->name);
-    memcpy(h->regions[0]->chunks[2]->addr, &temp_heap, HEAP_INFO_SIZE);
 
-    for (int i = 0; i < h->regions[0]->n_chunks; i++)
+    for (int i = 0; i < 5; i++)
     {
         smart_ptr t_ptr;
         t_ptr.addr = (char *)h->regions[0]->chunks[i]->addr + MEM_OFFSET;
@@ -267,6 +266,7 @@ inline heap_t *grow_kheap(heap_t *h)
         t_ptr.flag = h->regions[0]->chunks[i]->flag;
         h->regions[0]->chunks[i] = (smart_ptr *)((char *)h->regions[0]->chunks[i]->addr - CHUNK_INFO_SIZE);
         memcpy((smart_ptr *)((char *)h->regions[0]->chunks[i]), &t_ptr, CHUNK_INFO_SIZE);
+        chunks[i] = (smart_ptr *)((char *)t_ptr.addr - CHUNK_INFO_SIZE);
     }
     region_t temp_region;
     temp_region.alloc_size = h->regions[0]->alloc_size + ALIGN;
@@ -275,23 +275,32 @@ inline heap_t *grow_kheap(heap_t *h)
     strcpy(temp_region.name, h->regions[0]->name);
     temp_region.used_size = h->regions[0]->used_size;
     temp_region.chunks = (smart_ptr **)((char *)h->regions[0]->chunks + MEM_OFFSET);
-    h->regions[0] = (region_t *)((char *)h->regions[0] + MEM_OFFSET);
-    memcpy(h->regions[0], &temp_region, REGION_INFO_SIZE);
     h->regions = (region_t **)((char *)h->regions + MEM_OFFSET);
+    h->regions[0] = (region_t *)h->regions;
+    memcpy(h->regions[0], &temp_region, REGION_INFO_SIZE);
+    temp_heap.regions = h->regions;
 
     memcpy(temp, h_base, h_size); // Copy all of kheap
 
     smart_ptr arr_ptr;
 
-    arr_ptr.size = h->regions[0]->chunks[0]->size;
-    arr_ptr.flag = h->regions[0]->chunks[0]->flag;
-    strcpy(arr_ptr.name, h->regions[0]->chunks[0]->name);
-    arr_ptr.addr = ((char *)temp + h->regions[0]->alloc_size) - 5*CHUNK_ARR;
-    arr_ptr.base = h->regions[0]->chunks[0]->base;
+    arr_ptr.size = 5 * CHUNK_ARR;
+    arr_ptr.flag = RESERVED;
+    strcpy(arr_ptr.name, "CHUNK_ARR");
+    arr_ptr.base = temp;
+    arr_ptr.addr = ((char *)temp + (h_size + ALIGN)) - arr_ptr.size;
 
-    h->regions[0]->chunks[0] = (smart_ptr *)((char *)temp + h->regions[0]->alloc_size - (5*CHUNK_ARR + CHUNK_INFO_SIZE));
-    h->regions[0]->chunks = (smart_ptr **)((char *)temp + h->regions[0]->alloc_size - (5*CHUNK_ARR));
-
+    temp_region.chunks = (smart_ptr **)((char *)temp + (h_size + ALIGN) - (5*CHUNK_ARR));
+    h->regions[0]->chunks = (smart_ptr **)((char *)temp + (h_size + ALIGN) - (5*CHUNK_ARR));
+    h->regions[0]->chunks[0] = (smart_ptr *)((char *)temp + (h_size + ALIGN) - (5*CHUNK_ARR + CHUNK_INFO_SIZE));
+    h->regions[0]->chunks[1] = chunks[1];
+    h->regions[0]->chunks[2] = chunks[2];
+    h->regions[0]->chunks[3] = chunks[3];
+    h->regions[0]->chunks[4] = chunks[4];
+    h->regions[0]->chunks[4]->size += ALIGN;
+    memcpy(((heap_t *)h->regions[0]->chunks[2]->addr)->regions[0], &temp_region, REGION_INFO_SIZE);
+    memcpy(h->regions[0]->chunks[2]->addr, &temp_heap, HEAP_INFO_SIZE);
+    
     memcpy(h->regions[0]->chunks[0],
             &arr_ptr,
             CHUNK_INFO_SIZE); // Copy chunk smart ptr
@@ -309,14 +318,14 @@ inline heap_t *grow_kheap(heap_t *h)
         log(h);
     #endif*/
 
-    fprintf(log_file, "Heap: %s\n", h->name);
+    fprintf(log_file, "Heap: %12s\n", h->name);
     for (int iter = 0; iter < h->n_regions; iter++) {
-        fprintf(log_file, "%s // %p : %d : %d : %d\n", h->regions[iter]->name, h->regions[iter]->base_addr, h->regions[iter]->alloc_size, h->regions[iter]->used_size, h->regions[iter]->n_chunks);
+        fprintf(log_file, "%12s // %p : %d : %d : %d\n", h->regions[iter]->name, h->regions[iter]->base_addr, h->regions[iter]->alloc_size, h->regions[iter]->used_size, h->regions[iter]->n_chunks);
         for (int it = 0; it < h->regions[iter]->n_chunks; it++) {
             fprintf(log_file, "\t%12s // %12s @ %p : %d\n", h->regions[iter]->chunks[it]->name, stat_names[h->regions[iter]->chunks[it]->flag], h->regions[iter]->chunks[it]->addr, h->regions[iter]->chunks[it]->size);
         }
     }
-    fprintf(log_file, "\n\n");;
+    fprintf(log_file, "\n\n");
 
 
     return h;

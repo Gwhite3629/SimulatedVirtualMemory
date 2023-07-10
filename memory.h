@@ -74,9 +74,9 @@ extern int ret;
     VALID(global_heap, MEM_CODE, ALLOCATION_ERROR);
 
 #define log(h) \
-    fprintf(log_file, "Heap: %s\n", h->name); \
+    fprintf(log_file, "Heap: %12s\n", h->name); \
     for (int iter = 0; iter < h->n_regions; iter++) { \
-        fprintf(log_file, "%s // %p : %d : %d : %d\n",\
+        fprintf(log_file, "%12s // %p : %d : %d : %d\n",\
         h->regions[iter]->name,\
         h->regions[iter]->base_addr,\
         h->regions[iter]->alloc_size,\

@@ -34,7 +34,7 @@ ${DEBUG}: ${DEBUGOBJS}
 
 memory.o: memory.c memory.h
 
-memory_debug.o: memory_debug.o memory.h
+memory_debug.o: memory_debug.c memory.h
 
 memtest.o: memtest.c
 
