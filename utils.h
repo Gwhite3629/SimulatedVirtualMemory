@@ -128,8 +128,8 @@ typedef int err_t;
     (ptr) = memtmp;
 
 #define SFREE(ptr) \
-    if (ptr) \
-        free(ptr); \
+    if (ptr){ \
+        free(ptr);} \
     ptr = NULL;
 
 //  Return condition check

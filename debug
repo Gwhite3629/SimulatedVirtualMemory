@@ -18,4 +18,4 @@ sed -i '1s/^/#include <errno.h>\n /' memory_debug.c
 sed -i '1s/^/#include <stdio.h>\n /' memory_debug.c
 sed -i '1s/^/#include <stdint.h>\n /' memory_debug.c
 make debug
-valgrind --log-file=log --leak-check=full --show-leak-kinds=all --verbose --track-origins=yes ./memdebug
+valgrind --log-file=log --leak-check=full --show-leak-kinds=all --track-origins=yes ./memdebug

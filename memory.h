@@ -53,6 +53,8 @@ extern int ret;
 #define REGION_ARR sizeof(region_t *)
 #define CHUNK_ARR sizeof(smart_ptr *)
 
+#define HEAP_BASE_OFFSET (REGION_INFO_SIZE + (2*CHUNK_INFO_SIZE))
+
 #define new(ptr, size, type) \
     (type *)alloc(global_heap, size*sizeof(type)); \
     VALID(ptr, MEM_CODE, ALLOCATION_ERROR);
@@ -76,7 +78,7 @@ extern int ret;
 #define log(h) \
     fprintf(log_file, "Heap: %12s\n", h->name); \
     for (int iter = 0; iter < h->n_regions; iter++) { \
-        fprintf(log_file, "%12s // %p : %d : %d : %d\n",\
+        fprintf(log_file, "%12s \t //\t %p : %d : %d : %d\n",\
         h->regions[iter]->name,\
         h->regions[iter]->base_addr,\
         h->regions[iter]->alloc_size,\
