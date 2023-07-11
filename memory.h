@@ -54,6 +54,11 @@ extern int ret;
 #define CHUNK_ARR sizeof(smart_ptr *)
 
 #define HEAP_BASE_OFFSET (REGION_INFO_SIZE + (2*CHUNK_INFO_SIZE))
+#define NEW_REGION_SIZE (REGION_INFO_SIZE + 3*CHUNK_INFO_SIZE + 3*CHUNK_ARR)
+
+#define F_CHECK(F_CHUNK) \
+    !((F_CHUNK->flag & 1) \
+    ^ (F_CHUNK->flag & 2))
 
 #define new(ptr, size, type) \
     (type *)alloc(global_heap, size*sizeof(type)); \
@@ -76,53 +81,39 @@ extern int ret;
     VALID(global_heap, MEM_CODE, ALLOCATION_ERROR);
 
 #define log(h) \
-    fprintf(log_file, "Heap: %12s\n", h->name); \
+    fprintf(log_file, "--------------------------------------------------------------------------------\n");\
+    fprintf(log_file, "Heap: %16s\n", h->name); \
     for (int iter = 0; iter < h->n_regions; iter++) { \
-        fprintf(log_file, "%12s \t //\t %p : %d : %d : %d\n",\
+        fprintf(log_file, "\nRegion: %12s // %16p : %d : %d : %d\n\n",\
         h->regions[iter]->name,\
         h->regions[iter]->base_addr,\
         h->regions[iter]->alloc_size,\
         h->regions[iter]->used_size,\
         h->regions[iter]->n_chunks);\
         for (int it = 0; it < h->regions[iter]->n_chunks; it++) {\
-            fprintf(log_file, "\t%12s // %12s @ %p : %d\n",\
+            fprintf(log_file, "\t%16s // %16s @ %p : %d\n",\
             h->regions[iter]->chunks[it]->name,\
             stat_names[h->regions[iter]->chunks[it]->flag],\
             h->regions[iter]->chunks[it]->addr,\
             h->regions[iter]->chunks[it]->size);\
         } \
     } \
-    fprintf(log_file, "\n\n");
+    fprintf(log_file, "--------------------------------------------------------------------------------\n");\
+    fprintf(log_file, "\n");
 
 heap_t *create(int alignment, int size, const char *name);
 
 heap_t *grow_kheap(heap_t *h);
 
+void create_region(heap_t *h, int size);
+
 void destroy(heap_t *h);
 
 void *alloc(heap_t *h, int n, const char *name);
 
-heap_t *grow(heap_t *h, int n);
+void cull(heap_t *h, void *ptr);
 
-void *expand(heap_t *h, void *ptr, int size, bool strict);
-
-void *shrink(heap_t *h, void *ptr, int size);
-
-heap_t *cull(heap_t *h, void *ptr);
-
-heap_t *clean(heap_t *h);
-
-region_t* create_region(heap_t *h, int alignment, int size);
-
-void *alloc_region(heap_t *h, region_t *r, int n);
-
-region_t *expand_region(heap_t *h, region_t *r, int ptr_idx, int old_size, int addition);
-
-region_t *cull_region(region_t *r, void *ptr, int ptr_idx, int n);
-
-region_t *clean_region(heap_t *h, region_t *r);
-
-void destroy_region(region_t *r);
+void clean(heap_t *h);
 
 void r_print(region_t *r);
 
