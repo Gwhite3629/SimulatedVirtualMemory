@@ -57,7 +57,7 @@ extern int ret;
 #define NEW_REGION_SIZE (REGION_INFO_SIZE + 3*CHUNK_INFO_SIZE + 3*CHUNK_ARR)
 
 #define F_CHECK(F_CHUNK) \
-    !((F_CHUNK->flag & 1) \
+    ((F_CHUNK->flag & 1) \
     ^ (F_CHUNK->flag & 2))
 
 #define new(ptr, size, type) \

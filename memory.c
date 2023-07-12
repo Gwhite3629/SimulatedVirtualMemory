@@ -205,6 +205,7 @@ inline heap_t *create(int alignment, int size, const char *name)
     #endif
 
     #if LOGGING
+        fprintf(log_file, "\nCREATE\n");
         log(((heap_t *)kheap.chunks[2]->addr));
     #endif
 
@@ -335,6 +336,7 @@ inline heap_t *grow_kheap(heap_t *h)
     h = (heap_t *)(kheap.chunks[2]->addr);
 
     #if LOGGING
+        fprintf(log_file, "\nGROW_KHEAP\n");
         log(h);
     #endif
 
@@ -353,7 +355,7 @@ inline void *alloc(heap_t *h, int n, const char *name)
     int alloced = 0;
     
     for (i = 1; i < h->n_regions; i++) {
-        if ((h->regions[i]->chunks[h->regions[i]->n_chunks-1]->size > (int)(n + CHUNK_INFO_SIZE + CHUNK_ARR)) & F_CHECK(h->regions[i]->chunks[h->regions[i]->n_chunks-1])) {
+        if ((h->regions[i]->chunks[h->regions[i]->n_chunks-1]->size > (int)(n + CHUNK_INFO_SIZE + CHUNK_ARR)) & !F_CHECK(h->regions[i]->chunks[h->regions[i]->n_chunks-1])) {
             // Check passed, region space has enough room for:
             // 1. Smart ptr
             // 2. User data ptr
@@ -410,6 +412,7 @@ inline void *alloc(heap_t *h, int n, const char *name)
     }
 
     #if LOGGING
+        fprintf(log_file, "\nALLOC\n");
         log(h);
     #endif
 
@@ -434,6 +437,11 @@ void create_region(heap_t *h, int size)
         VALID(base_reg1, MEM_CODE, ALLOCATION_ERROR);
 	    memset(base_reg1, 0, size);
     #endif
+
+    if ((h->regions[0]->alloc_size - h->regions[0]->used_size) < (int)REGION_ARR) {
+        h = grow_kheap(h);
+    }
+    VALID(h, MEM_CODE, ALLOCATION_ERROR);
 
     // Initialize user region
 
@@ -496,10 +504,105 @@ void create_region(heap_t *h, int size)
     memcpy(((char *)new_free.addr - CHUNK_INFO_SIZE), &new_free, CHUNK_INFO_SIZE);
     h->regions[0]->chunks[h->regions[0]->n_chunks-1] = (smart_ptr *)((char *)new_free.addr - CHUNK_INFO_SIZE);
 
+    h->regions[0]->used_size += REGION_ARR;
+    h->regions[0]->chunks[3]->size += REGION_ARR;
+
     #if LOGGING
+        fprintf(log_file, "\nCREATE_REGION\n");
         log(h);
     #endif
 
 exit:
+    return;
+}
+
+inline void cull(heap_t *h, void *ptr)
+{
+    int found = 0;
+    int ptr_idx = -1;
+    int i, j = 0;
+
+    for (i = 1; i < h->n_regions; i++) {
+        for (j = 0; j < h->regions[i]->n_chunks; j++) {
+            if (h->regions[i]->chunks[j]->addr == ptr) {
+                found = 1;
+                ptr_idx = j;
+                break;
+            }
+        }
+        if (found == 1) {
+            h->regions[i]->chunks[j]->flag = CULLED;
+            h->regions[i]->used_size -= (h->regions[i]->chunks[j]->size + CHUNK_INFO_SIZE + CHUNK_ARR);
+            break;
+        }
+    }
+
+    if (((h->regions[i]->chunks[j]->flag == CULLED) & !F_CHECK(h->regions[i]->chunks[j-1])) |
+        ((h->regions[i]->chunks[j]->flag == CULLED) & (h->regions[i]->chunks[j-1]->flag == CULLED))) {
+        printf("Combining low\n");
+        smart_ptr new_free;
+        smart_ptr new_chunk;
+
+        new_free.addr = h->regions[i]->chunks[j-1]->addr;
+        new_free.base = h->regions[i]->base_addr;
+        new_free.flag = UNALLOCATED;
+        new_free.size = h->regions[i]->chunks[j-1]->size + CHUNK_INFO_SIZE + h->regions[i]->chunks[j]->size;
+        strcpy(new_free.name, h->regions[i]->chunks[h->regions[i]->n_chunks-1]->name);
+    
+        new_chunk.addr = ((char *)h->regions[i]->chunks + CHUNK_ARR);
+        new_chunk.base = h->regions[i]->base_addr;
+        new_chunk.flag = RESERVED;
+        new_chunk.size = h->regions[i]->chunks[0]->size - CHUNK_ARR;
+        strcpy(new_chunk.name, h->regions[i]->chunks[0]->name);
+
+        memmove(new_chunk.addr, h->regions[i]->chunks, (j) * CHUNK_ARR);
+        h->regions[i]->chunks = (smart_ptr **)new_chunk.addr;
+        h->regions[i]->chunks[0] = (smart_ptr *)((char *)new_chunk.addr - CHUNK_INFO_SIZE);
+        h->regions[i]->chunks[j-1] = (smart_ptr *)((char *)new_free.addr - CHUNK_INFO_SIZE);
+        memcpy(((char *)new_free.addr - CHUNK_INFO_SIZE), &new_free, CHUNK_INFO_SIZE);
+        memcpy(((char *)new_chunk.addr - CHUNK_INFO_SIZE), &new_chunk, CHUNK_INFO_SIZE);
+
+        h->regions[i]->n_chunks = h->regions[i]->n_chunks - 1;
+        h->regions[i]->chunks[h->regions[i]->n_chunks-1]->size += CHUNK_ARR;
+        j -= 1;
+    }
+
+    if ((!F_CHECK(h->regions[i]->chunks[j]) & !F_CHECK(h->regions[i]->chunks[j+1])) |
+        (!F_CHECK(h->regions[i]->chunks[j]) & (h->regions[i]->chunks[j+1]->flag == CULLED)) |
+        ((h->regions[i]->chunks[j]->flag == CULLED) & !F_CHECK(h->regions[i]->chunks[j+1])) |
+        ((h->regions[i]->chunks[j]->flag == CULLED) & (h->regions[i]->chunks[j+1]->flag == CULLED))) {
+        printf("Combining high\n");
+        smart_ptr new_free;
+        smart_ptr new_chunk;
+
+        new_free.addr = ptr;
+        new_free.base = h->regions[i]->base_addr;
+        new_free.flag = UNALLOCATED;
+        new_free.size = h->regions[i]->chunks[j+1]->size + CHUNK_INFO_SIZE + h->regions[i]->chunks[j]->size;
+        strcpy(new_free.name, h->regions[i]->chunks[h->regions[i]->n_chunks-1]->name);
+    
+        new_chunk.addr = ((char *)h->regions[i]->chunks + CHUNK_ARR);
+        new_chunk.base = h->regions[i]->base_addr;
+        new_chunk.flag = RESERVED;
+        new_chunk.size = h->regions[i]->chunks[0]->size - CHUNK_ARR;
+        strcpy(new_chunk.name, h->regions[i]->chunks[0]->name);
+
+        memcpy(((char *)new_free.addr - CHUNK_INFO_SIZE), &new_free, CHUNK_INFO_SIZE);
+        memmove(new_chunk.addr, h->regions[i]->chunks, (j) * CHUNK_ARR);
+        memcpy(((char *)new_chunk.addr - CHUNK_INFO_SIZE), &new_chunk, CHUNK_INFO_SIZE);
+        h->regions[i]->chunks = (smart_ptr **)new_chunk.addr;
+        h->regions[i]->chunks[0] = (smart_ptr *)((char *)new_chunk.addr - CHUNK_INFO_SIZE);
+        h->regions[i]->chunks[j] = (smart_ptr *)((char *)new_free.addr - CHUNK_INFO_SIZE);
+
+        h->regions[i]->n_chunks--;
+        h->regions[i]->chunks[h->regions[i]->n_chunks-1]->size += CHUNK_ARR;
+    }
+
+
+    #if LOGGING
+        fprintf(log_file, "\nCULL\n");
+        log(h);
+    #endif
+
     return;
 }
