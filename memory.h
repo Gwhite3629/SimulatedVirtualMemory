@@ -60,8 +60,8 @@ extern int ret;
     ((F_CHUNK->flag & 1) \
     ^ (F_CHUNK->flag & 2))
 
-#define new(ptr, size, type) \
-    (type *)alloc(global_heap, size*sizeof(type)); \
+#define new(ptr, size, type, varname) \
+    ptr = (type *)alloc(global_heap, size*sizeof(type), varname); \
     VALID(ptr, MEM_CODE, ALLOCATION_ERROR);
 
 #define shorten(ptr, size, type) \
@@ -73,11 +73,7 @@ extern int ret;
     VALID(ptr, MEM_CODE, ALLOCATION_ERROR);
 
 #define del(ptr) \
-    global_heap = cull(global_heap, ptr); \
-    VALID(global_heap, MEM_CODE, ALLOCATION_ERROR);
-
-#define cleanup() \
-    global_heap = clean(global_heap); \
+    cull(global_heap, ptr); \
     VALID(global_heap, MEM_CODE, ALLOCATION_ERROR);
 
 #define log(h) \

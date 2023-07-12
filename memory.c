@@ -401,7 +401,7 @@ inline void *alloc(heap_t *h, int n, const char *name)
             ptr = usr_smart.addr;
             alloced = 1;
             h->regions[i]->used_size += (n + CHUNK_INFO_SIZE + CHUNK_ARR);
-
+            break;
         }
     }
 
@@ -539,7 +539,6 @@ inline void cull(heap_t *h, void *ptr)
 
     if (((h->regions[i]->chunks[j]->flag == CULLED) & !F_CHECK(h->regions[i]->chunks[j-1])) |
         ((h->regions[i]->chunks[j]->flag == CULLED) & (h->regions[i]->chunks[j-1]->flag == CULLED))) {
-        printf("Combining low\n");
         smart_ptr new_free;
         smart_ptr new_chunk;
 
@@ -571,7 +570,6 @@ inline void cull(heap_t *h, void *ptr)
         (!F_CHECK(h->regions[i]->chunks[j]) & (h->regions[i]->chunks[j+1]->flag == CULLED)) |
         ((h->regions[i]->chunks[j]->flag == CULLED) & !F_CHECK(h->regions[i]->chunks[j+1])) |
         ((h->regions[i]->chunks[j]->flag == CULLED) & (h->regions[i]->chunks[j+1]->flag == CULLED))) {
-        printf("Combining high\n");
         smart_ptr new_free;
         smart_ptr new_chunk;
 
