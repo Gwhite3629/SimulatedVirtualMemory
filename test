@@ -18,7 +18,7 @@ sed -i '1s/^/#include <string.h>\n /' memory_debug.c
 sed -i '1s/^/#include <errno.h>\n /' memory_debug.c
 sed -i '1s/^/#include <stdio.h>\n /' memory_debug.c
 sed -i '1s/^/#include <stdint.h>\n /' memory_debug.c
-make memtest_debug
+make debug
 valgrind --log-file=log --leak-check=full --show-leak-kinds=all --track-origins=yes ./memtest_debug 5 4 3 32 64 0
 mv mem_log.txt testlogs/mem_log_1.txt
 mv log testlogs/log_1

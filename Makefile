@@ -20,7 +20,7 @@ OFLAGS=-fPIC -ggdb3 -Og -rdynamic
 
 all:${MEM} ${SIMPLE} ${LIBRARY}
 
-debug:${DEBUG}
+debug:${DEBUG} ${MEMDEBUG}
 
 ${MEM}: ${MEMOBJS}
 	${CC} ${LFLAGS} -o $@ $^
