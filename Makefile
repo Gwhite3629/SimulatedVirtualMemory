@@ -31,16 +31,20 @@ COMPdebug:${MEMDEBUG} ${SIMPLEDEBUG}
 .PHONY : debug COMPdebug
 
 ${MEM}: ${MEMOBJS}
+	mkdir -p build
 	${CC} -o $@ $^
 
 ${SIMPLE}: ${SIMPLEOBJS}
+	mkdir -p build
 	${CC} -o $@ $^
 
 ${LIBRARY}: ${LIBRARYOBJS}
+	mkdir -p build
 	${CC} ${OFLAGS} -shared -Lstatic -o $@ $^
 
 debug:
 	make clean
+	mkdir -p debug
 	cp memory.c temp.c
 	cp memory.h temp.h
 	cp utils.h temp.u
@@ -78,3 +82,4 @@ clean:
 	rm -rf ${MEMDEBUG} core*
 	rm -rf memory_debug.c core*
 	rm -rf *.o core*
+	rm -rf build debug
