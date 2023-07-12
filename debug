@@ -1,5 +1,0 @@
-#!/usr/bin/bash
-
-make clean
-make debug
-valgrind --log-file=log --leak-check=full --show-leak-kinds=all --track-origins=yes ./simpledebug

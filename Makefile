@@ -1,11 +1,11 @@
 CC=gcc
 LINK=gcc
 
-MEM=memtest
-SIMPLE=simpletest
-LIBRARY=memory.so
-SIMPLEDEBUG=simpledebug
-MEMDEBUG=memdebug
+MEM=build/memtest
+SIMPLE=build/simpletest
+LIBRARY=build/memory.so
+SIMPLEDEBUG=debug/simpledebug
+MEMDEBUG=debug/memdebug
 
 MEMOBJS=memtest.o memory.o
 SIMPLEOBJS=simpletest.o memory.o
