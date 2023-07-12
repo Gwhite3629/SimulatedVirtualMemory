@@ -604,3 +604,48 @@ inline void cull(heap_t *h, void *ptr)
 
     return;
 }
+
+void *change(heap_t *h, void *ptr, int size)
+{
+    int found = 0;
+    int ptr_idx = -1;
+    int i, j = 0;
+
+    void *new_ptr = NULL;
+
+    for (i = 1; i < h->n_regions; i++) {
+        for (j = 0; j < h->regions[i]->n_chunks; j++) {
+            if (h->regions[i]->chunks[j]->addr == ptr) {
+                found = 1;
+                ptr_idx = j;
+                break;
+            }
+        }
+        if (found == 1) {
+            break;
+        }
+    }
+
+    if (found == 0) {
+        return NULL;
+    }
+
+    new_ptr = alloc(h, size, h->regions[i]->chunks[j]->name);
+    VALID(new_ptr, MEM_CODE, ALLOCATION_ERROR);
+
+    if (size > h->regions[i]->chunks[j]->size) {
+        memcpy(new_ptr, ptr, h->regions[i]->chunks[j]->size);
+    } else {
+        memcpy(new_ptr, ptr, size);
+    }
+
+    cull(h, ptr);
+
+    #if LOGGING
+        fprintf(log_file, "\nCHANGE\n");
+        log(h);
+    #endif
+
+exit:
+    return new_ptr;
+}

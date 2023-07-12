@@ -17,6 +17,10 @@ int main(void)
 
 	new(usr_ptr_4, 128, float, "usr_ptr_4");
 
+	alt(usr_ptr_3, 256, double);
+
+	alt(usr_ptr_4, 64, float);
+
 	del(usr_ptr_1);
 	del(usr_ptr_4);
 	del(usr_ptr_3);

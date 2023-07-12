@@ -64,12 +64,8 @@ extern int ret;
     ptr = (type *)alloc(global_heap, size*sizeof(type), varname); \
     VALID(ptr, MEM_CODE, ALLOCATION_ERROR);
 
-#define shorten(ptr, size, type) \
-    (type *)shrink(global_heap, ptr, size*sizeof(type)); \
-    VALID(ptr, MEM_CODE, ALLOCATION_ERROR);
-
-#define widen(ptr, size, type) \
-    (type *)expand(global_heap, ptr, size*sizeof(type), 0); \
+#define alt(ptr, size, type) \
+    ptr = (type *)change(global_heap, ptr, size*sizeof(type)); \
     VALID(ptr, MEM_CODE, ALLOCATION_ERROR);
 
 #define del(ptr) \
@@ -111,8 +107,6 @@ void cull(heap_t *h, void *ptr);
 
 void clean(heap_t *h);
 
-void r_print(region_t *r);
-
-void h_print(heap_t *h);
+void *change(heap_t *h, void *ptr, int size);
 
 #endif // _MEMORY_H_

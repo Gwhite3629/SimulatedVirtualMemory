@@ -154,7 +154,7 @@ Region:       HEAP_2 //        0x4a54000 : 8192 : 5222 : 4
 --------------------------------------------------------------------------------
 
 
-CULL
+ALLOC
 --------------------------------------------------------------------------------
 Heap:           GLOBAL
 
@@ -166,21 +166,22 @@ Region:        KHEAP //        0x4a4f000 : 4096 : 323 : 5
 	         REG_ARR //         RESERVED @ 0x4a4f0b7 : 24
 	      KHEAP_FREE //      UNALLOCATED @ 0x4a4f0f5 : 3773
 
-Region:       HEAP_1 //        0x4a51000 : 4096 : 1804 : 6
+Region:       HEAP_1 //        0x4a51000 : 4096 : 2362 : 6
 
 	       CHUNK_ARR //         RESERVED @ 0x4a51fd0 : 48
 	         REG_PTR //         RESERVED @ 0x4a51026 : 38
-	       usr_ptr_1 //           CULLED @ 0x4a51072 : 512
+	       usr_ptr_1 //         RESERVED @ 0x4a51072 : 512
 	       usr_ptr_3 //         RESERVED @ 0x4a51298 : 1024
 	       usr_ptr_4 //         RESERVED @ 0x4a516be : 512
 	       HEAP_FREE //      UNALLOCATED @ 0x4a518e4 : 1734
 
-Region:       HEAP_2 //        0x4a54000 : 8192 : 5222 : 4
+Region:       HEAP_2 //        0x4a54000 : 8192 : 7316 : 5
 
-	       CHUNK_ARR //         RESERVED @ 0x4a55fe0 : 32
+	       CHUNK_ARR //         RESERVED @ 0x4a55fd8 : 40
 	         REG_PTR //         RESERVED @ 0x4a54026 : 38
 	       usr_ptr_2 //         RESERVED @ 0x4a54072 : 5000
-	       HEAP_FREE //      UNALLOCATED @ 0x4a55420 : 2970
+	       usr_ptr_3 //         RESERVED @ 0x4a55420 : 2048
+	       HEAP_FREE //      UNALLOCATED @ 0x4a55c46 : 876
 --------------------------------------------------------------------------------
 
 
@@ -196,13 +197,225 @@ Region:        KHEAP //        0x4a4f000 : 4096 : 323 : 5
 	         REG_ARR //         RESERVED @ 0x4a4f0b7 : 24
 	      KHEAP_FREE //      UNALLOCATED @ 0x4a4f0f5 : 3773
 
-Region:       HEAP_1 //        0x4a51000 : 4096 : 1246 : 5
+Region:       HEAP_1 //        0x4a51000 : 4096 : 1292 : 6
+
+	       CHUNK_ARR //         RESERVED @ 0x4a51fd0 : 48
+	         REG_PTR //         RESERVED @ 0x4a51026 : 38
+	       usr_ptr_1 //         RESERVED @ 0x4a51072 : 512
+	       usr_ptr_3 //           CULLED @ 0x4a51298 : 1024
+	       usr_ptr_4 //         RESERVED @ 0x4a516be : 512
+	       HEAP_FREE //      UNALLOCATED @ 0x4a518e4 : 1734
+
+Region:       HEAP_2 //        0x4a54000 : 8192 : 7316 : 5
+
+	       CHUNK_ARR //         RESERVED @ 0x4a55fd8 : 40
+	         REG_PTR //         RESERVED @ 0x4a54026 : 38
+	       usr_ptr_2 //         RESERVED @ 0x4a54072 : 5000
+	       usr_ptr_3 //         RESERVED @ 0x4a55420 : 2048
+	       HEAP_FREE //      UNALLOCATED @ 0x4a55c46 : 876
+--------------------------------------------------------------------------------
+
+
+CHANGE
+--------------------------------------------------------------------------------
+Heap:           GLOBAL
+
+Region:        KHEAP //        0x4a4f000 : 4096 : 323 : 5
+
+	       CHUNK_ARR //         RESERVED @ 0x4a4ffd8 : 40
+	        KREG_PTR //         RESERVED @ 0x4a4f026 : 38
+	       KHEAP_PTR //         RESERVED @ 0x4a4f072 : 31
+	         REG_ARR //         RESERVED @ 0x4a4f0b7 : 24
+	      KHEAP_FREE //      UNALLOCATED @ 0x4a4f0f5 : 3773
+
+Region:       HEAP_1 //        0x4a51000 : 4096 : 1292 : 6
+
+	       CHUNK_ARR //         RESERVED @ 0x4a51fd0 : 48
+	         REG_PTR //         RESERVED @ 0x4a51026 : 38
+	       usr_ptr_1 //         RESERVED @ 0x4a51072 : 512
+	       usr_ptr_3 //           CULLED @ 0x4a51298 : 1024
+	       usr_ptr_4 //         RESERVED @ 0x4a516be : 512
+	       HEAP_FREE //      UNALLOCATED @ 0x4a518e4 : 1734
+
+Region:       HEAP_2 //        0x4a54000 : 8192 : 7316 : 5
+
+	       CHUNK_ARR //         RESERVED @ 0x4a55fd8 : 40
+	         REG_PTR //         RESERVED @ 0x4a54026 : 38
+	       usr_ptr_2 //         RESERVED @ 0x4a54072 : 5000
+	       usr_ptr_3 //         RESERVED @ 0x4a55420 : 2048
+	       HEAP_FREE //      UNALLOCATED @ 0x4a55c46 : 876
+--------------------------------------------------------------------------------
+
+
+ALLOC
+--------------------------------------------------------------------------------
+Heap:           GLOBAL
+
+Region:        KHEAP //        0x4a4f000 : 4096 : 323 : 5
+
+	       CHUNK_ARR //         RESERVED @ 0x4a4ffd8 : 40
+	        KREG_PTR //         RESERVED @ 0x4a4f026 : 38
+	       KHEAP_PTR //         RESERVED @ 0x4a4f072 : 31
+	         REG_ARR //         RESERVED @ 0x4a4f0b7 : 24
+	      KHEAP_FREE //      UNALLOCATED @ 0x4a4f0f5 : 3773
+
+Region:       HEAP_1 //        0x4a51000 : 4096 : 1594 : 7
+
+	       CHUNK_ARR //         RESERVED @ 0x4a51fc8 : 56
+	         REG_PTR //         RESERVED @ 0x4a51026 : 38
+	       usr_ptr_1 //         RESERVED @ 0x4a51072 : 512
+	       usr_ptr_3 //           CULLED @ 0x4a51298 : 1024
+	       usr_ptr_4 //         RESERVED @ 0x4a516be : 512
+	       usr_ptr_4 //         RESERVED @ 0x4a518e4 : 256
+	       HEAP_FREE //      UNALLOCATED @ 0x4a51a0a : 1432
+
+Region:       HEAP_2 //        0x4a54000 : 8192 : 7316 : 5
+
+	       CHUNK_ARR //         RESERVED @ 0x4a55fd8 : 40
+	         REG_PTR //         RESERVED @ 0x4a54026 : 38
+	       usr_ptr_2 //         RESERVED @ 0x4a54072 : 5000
+	       usr_ptr_3 //         RESERVED @ 0x4a55420 : 2048
+	       HEAP_FREE //      UNALLOCATED @ 0x4a55c46 : 876
+--------------------------------------------------------------------------------
+
+
+CULL
+--------------------------------------------------------------------------------
+Heap:           GLOBAL
+
+Region:        KHEAP //        0x4a4f000 : 4096 : 323 : 5
+
+	       CHUNK_ARR //         RESERVED @ 0x4a4ffd8 : 40
+	        KREG_PTR //         RESERVED @ 0x4a4f026 : 38
+	       KHEAP_PTR //         RESERVED @ 0x4a4f072 : 31
+	         REG_ARR //         RESERVED @ 0x4a4f0b7 : 24
+	      KHEAP_FREE //      UNALLOCATED @ 0x4a4f0f5 : 3773
+
+Region:       HEAP_1 //        0x4a51000 : 4096 : 1036 : 6
+
+	       CHUNK_ARR //         RESERVED @ 0x4a51fd0 : 48
+	         REG_PTR //         RESERVED @ 0x4a51026 : 38
+	       usr_ptr_1 //         RESERVED @ 0x4a51072 : 512
+	       HEAP_FREE //      UNALLOCATED @ 0x4a51298 : 1574
+	       usr_ptr_4 //         RESERVED @ 0x4a518e4 : 256
+	       HEAP_FREE //      UNALLOCATED @ 0x4a51a0a : 1440
+
+Region:       HEAP_2 //        0x4a54000 : 8192 : 7316 : 5
+
+	       CHUNK_ARR //         RESERVED @ 0x4a55fd8 : 40
+	         REG_PTR //         RESERVED @ 0x4a54026 : 38
+	       usr_ptr_2 //         RESERVED @ 0x4a54072 : 5000
+	       usr_ptr_3 //         RESERVED @ 0x4a55420 : 2048
+	       HEAP_FREE //      UNALLOCATED @ 0x4a55c46 : 876
+--------------------------------------------------------------------------------
+
+
+CHANGE
+--------------------------------------------------------------------------------
+Heap:           GLOBAL
+
+Region:        KHEAP //        0x4a4f000 : 4096 : 323 : 5
+
+	       CHUNK_ARR //         RESERVED @ 0x4a4ffd8 : 40
+	        KREG_PTR //         RESERVED @ 0x4a4f026 : 38
+	       KHEAP_PTR //         RESERVED @ 0x4a4f072 : 31
+	         REG_ARR //         RESERVED @ 0x4a4f0b7 : 24
+	      KHEAP_FREE //      UNALLOCATED @ 0x4a4f0f5 : 3773
+
+Region:       HEAP_1 //        0x4a51000 : 4096 : 1036 : 6
+
+	       CHUNK_ARR //         RESERVED @ 0x4a51fd0 : 48
+	         REG_PTR //         RESERVED @ 0x4a51026 : 38
+	       usr_ptr_1 //         RESERVED @ 0x4a51072 : 512
+	       HEAP_FREE //      UNALLOCATED @ 0x4a51298 : 1574
+	       usr_ptr_4 //         RESERVED @ 0x4a518e4 : 256
+	       HEAP_FREE //      UNALLOCATED @ 0x4a51a0a : 1440
+
+Region:       HEAP_2 //        0x4a54000 : 8192 : 7316 : 5
+
+	       CHUNK_ARR //         RESERVED @ 0x4a55fd8 : 40
+	         REG_PTR //         RESERVED @ 0x4a54026 : 38
+	       usr_ptr_2 //         RESERVED @ 0x4a54072 : 5000
+	       usr_ptr_3 //         RESERVED @ 0x4a55420 : 2048
+	       HEAP_FREE //      UNALLOCATED @ 0x4a55c46 : 876
+--------------------------------------------------------------------------------
+
+
+CULL
+--------------------------------------------------------------------------------
+Heap:           GLOBAL
+
+Region:        KHEAP //        0x4a4f000 : 4096 : 323 : 5
+
+	       CHUNK_ARR //         RESERVED @ 0x4a4ffd8 : 40
+	        KREG_PTR //         RESERVED @ 0x4a4f026 : 38
+	       KHEAP_PTR //         RESERVED @ 0x4a4f072 : 31
+	         REG_ARR //         RESERVED @ 0x4a4f0b7 : 24
+	      KHEAP_FREE //      UNALLOCATED @ 0x4a4f0f5 : 3773
+
+Region:       HEAP_1 //        0x4a51000 : 4096 : 478 : 5
 
 	       CHUNK_ARR //         RESERVED @ 0x4a51fd8 : 40
 	         REG_PTR //         RESERVED @ 0x4a51026 : 38
-	       usr_ptr_1 //           CULLED @ 0x4a51072 : 512
-	       usr_ptr_3 //         RESERVED @ 0x4a51298 : 1024
-	       HEAP_FREE //      UNALLOCATED @ 0x4a516be : 2292
+	       HEAP_FREE //      UNALLOCATED @ 0x4a51072 : 2124
+	       usr_ptr_4 //         RESERVED @ 0x4a518e4 : 256
+	       HEAP_FREE //      UNALLOCATED @ 0x4a51a0a : 1448
+
+Region:       HEAP_2 //        0x4a54000 : 8192 : 7316 : 5
+
+	       CHUNK_ARR //         RESERVED @ 0x4a55fd8 : 40
+	         REG_PTR //         RESERVED @ 0x4a54026 : 38
+	       usr_ptr_2 //         RESERVED @ 0x4a54072 : 5000
+	       usr_ptr_3 //         RESERVED @ 0x4a55420 : 2048
+	       HEAP_FREE //      UNALLOCATED @ 0x4a55c46 : 876
+--------------------------------------------------------------------------------
+
+
+CULL
+--------------------------------------------------------------------------------
+Heap:           GLOBAL
+
+Region:        KHEAP //        0x4a4f000 : 4096 : 323 : 5
+
+	       CHUNK_ARR //         RESERVED @ 0x4a4ffd8 : 40
+	        KREG_PTR //         RESERVED @ 0x4a4f026 : 38
+	       KHEAP_PTR //         RESERVED @ 0x4a4f072 : 31
+	         REG_ARR //         RESERVED @ 0x4a4f0b7 : 24
+	      KHEAP_FREE //      UNALLOCATED @ 0x4a4f0f5 : 3773
+
+Region:       HEAP_1 //        0x4a51000 : 4096 : 176 : 3
+
+	       CHUNK_ARR //         RESERVED @ 0x4a51fe8 : 24
+	         REG_PTR //         RESERVED @ 0x4a51026 : 38
+	       HEAP_FREE //      UNALLOCATED @ 0x4a518e4 : 3920
+
+Region:       HEAP_2 //        0x4a54000 : 8192 : 7316 : 5
+
+	       CHUNK_ARR //         RESERVED @ 0x4a55fd8 : 40
+	         REG_PTR //         RESERVED @ 0x4a54026 : 38
+	       usr_ptr_2 //         RESERVED @ 0x4a54072 : 5000
+	       usr_ptr_3 //         RESERVED @ 0x4a55420 : 2048
+	       HEAP_FREE //      UNALLOCATED @ 0x4a55c46 : 876
+--------------------------------------------------------------------------------
+
+
+CULL
+--------------------------------------------------------------------------------
+Heap:           GLOBAL
+
+Region:        KHEAP //        0x4a4f000 : 4096 : 323 : 5
+
+	       CHUNK_ARR //         RESERVED @ 0x4a4ffd8 : 40
+	        KREG_PTR //         RESERVED @ 0x4a4f026 : 38
+	       KHEAP_PTR //         RESERVED @ 0x4a4f072 : 31
+	         REG_ARR //         RESERVED @ 0x4a4f0b7 : 24
+	      KHEAP_FREE //      UNALLOCATED @ 0x4a4f0f5 : 3773
+
+Region:       HEAP_1 //        0x4a51000 : 4096 : 176 : 3
+
+	       CHUNK_ARR //         RESERVED @ 0x4a51fe8 : 24
+	         REG_PTR //         RESERVED @ 0x4a51026 : 38
+	       HEAP_FREE //      UNALLOCATED @ 0x4a518e4 : 3920
 
 Region:       HEAP_2 //        0x4a54000 : 8192 : 5222 : 4
 
@@ -229,34 +442,7 @@ Region:       HEAP_1 //        0x4a51000 : 4096 : 176 : 3
 
 	       CHUNK_ARR //         RESERVED @ 0x4a51fe8 : 24
 	         REG_PTR //         RESERVED @ 0x4a51026 : 38
-	       HEAP_FREE //      UNALLOCATED @ 0x4a51298 : 3920
-
-Region:       HEAP_2 //        0x4a54000 : 8192 : 5222 : 4
-
-	       CHUNK_ARR //         RESERVED @ 0x4a55fe0 : 32
-	         REG_PTR //         RESERVED @ 0x4a54026 : 38
-	       usr_ptr_2 //         RESERVED @ 0x4a54072 : 5000
-	       HEAP_FREE //      UNALLOCATED @ 0x4a55420 : 2970
---------------------------------------------------------------------------------
-
-
-CULL
---------------------------------------------------------------------------------
-Heap:           GLOBAL
-
-Region:        KHEAP //        0x4a4f000 : 4096 : 323 : 5
-
-	       CHUNK_ARR //         RESERVED @ 0x4a4ffd8 : 40
-	        KREG_PTR //         RESERVED @ 0x4a4f026 : 38
-	       KHEAP_PTR //         RESERVED @ 0x4a4f072 : 31
-	         REG_ARR //         RESERVED @ 0x4a4f0b7 : 24
-	      KHEAP_FREE //      UNALLOCATED @ 0x4a4f0f5 : 3773
-
-Region:       HEAP_1 //        0x4a51000 : 4096 : 176 : 3
-
-	       CHUNK_ARR //         RESERVED @ 0x4a51fe8 : 24
-	         REG_PTR //         RESERVED @ 0x4a51026 : 38
-	       HEAP_FREE //      UNALLOCATED @ 0x4a51298 : 3920
+	       HEAP_FREE //      UNALLOCATED @ 0x4a518e4 : 3920
 
 Region:       HEAP_2 //        0x4a54000 : 8192 : 176 : 3
 
