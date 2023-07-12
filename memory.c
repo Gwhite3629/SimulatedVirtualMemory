@@ -386,7 +386,7 @@ inline void *alloc(heap_t *h, int n, const char *name)
             usr_smart.size = n;
             usr_smart.base = h->regions[i]->base_addr;
             usr_smart.flag = RESERVED;
-            strcpy(usr_smart.name, name);
+            strncpy(usr_smart.name, name, 14);
 
             memcpy(((char *)new_free.addr - CHUNK_INFO_SIZE), &new_free, CHUNK_INFO_SIZE);
             memcpy(((char *)usr_smart.addr - CHUNK_INFO_SIZE), &usr_smart, CHUNK_INFO_SIZE);

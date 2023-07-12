@@ -3,28 +3,28 @@
 
 int main(void)
 {
-	int *usr_ptr_1 = NULL;
-	char *usr_ptr_2 = NULL;
-	double *usr_ptr_3 = NULL;
-	float *usr_ptr_4 = NULL;
+	int *ints = NULL;
+	char *chars = NULL;
+	double *doubles = NULL;
+	float *floats = NULL;
 
 
-	new(usr_ptr_1, 128, int, "usr_ptr_1");
+	new(ints, 128, int);
 
-	new(usr_ptr_2, 5000, char, "usr_ptr_2");
+	new(chars, 5000, char);
 
-	new(usr_ptr_3, 128, double, "usr_ptr_3");
+	new(doubles, 128, double);
 
-	new(usr_ptr_4, 128, float, "usr_ptr_4");
+	new(floats, 128, float);
 
-	alt(usr_ptr_3, 256, double);
+	alt(doubles, 256, double);
 
-	alt(usr_ptr_4, 64, float);
+	alt(floats, 64, float);
 
-	del(usr_ptr_1);
-	del(usr_ptr_4);
-	del(usr_ptr_3);
-	del(usr_ptr_2);
+	del(ints);
+	del(floats);
+	del(doubles);
+	del(chars);
 
 exit:
 	return 0;

@@ -35,24 +35,24 @@ int main(int argc, char *argv[])
     max_size = atoi(argv[5]);
     n_mixups = atoi(argv[6]);
 
-    new(f_arrays, n_floats, float *, "f_arrays");
-    new(b_arrays, n_bools, bool *, "b_arrays");
-    new(i_arrays, n_ints, int *, "i_arrays");
-    new(f_sizes, n_floats, int, "f_sizes");
-    new(b_sizes, n_bools, int, "b_sizes");
-    new(i_sizes, n_ints, int, "i_sizes");
+    new(f_arrays, n_floats, float *);
+    new(b_arrays, n_bools, bool *);
+    new(i_arrays, n_ints, int *);
+    new(f_sizes, n_floats, int);
+    new(b_sizes, n_bools, int);
+    new(i_sizes, n_ints, int);
 
     for (int i = 0; i < n_floats; i++) {
 	    f_sizes[i] = (int)(((float)rand()/(float)RAND_MAX) * (float)(max_size - min_size) + (float)(min_size));
-	    new(f_arrays[i], f_sizes[i], float, "f_arrays_i");
+	    new(f_arrays[i], f_sizes[i], float);
     }
     for (int i = 0; i < n_bools; i++) {
 	    b_sizes[i] = (int)(((float)rand()/(float)RAND_MAX) * (float)(max_size - min_size) + (float)(min_size));
-	    new(b_arrays[i], b_sizes[i], bool, "b_arrays_i");
+	    new(b_arrays[i], b_sizes[i], bool);
     }
     for (int i = 0; i < n_ints; i++) {
 	    i_sizes[i] = (int)(((float)rand()/(float)RAND_MAX) * (float)(max_size - min_size) + (float)(min_size));
-	    new(i_arrays[i], i_sizes[i], int, "i_arrays_i");
+	    new(i_arrays[i], i_sizes[i], int);
     }
 
     for (int i = 0; i < n_floats; i++) {
