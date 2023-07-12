@@ -1,0 +1,32 @@
+#!/usr/bin/bash
+
+mkdir testlogs
+make clean
+cp memory.c temp.c
+cp memory.h temp.h
+cp utils.h temp.u
+sed -e '1,6d' < memory.c > temp && mv temp memory.c
+sed -e '4,8d' < memory.h > temp && mv temp memory.h
+sed -e '4,7d' < utils.h > temp && mv temp utils.h
+gcc -E -P -C -D LOGGING=1 -D WINDOWS=0 memory.c > memory_debug.c
+mv temp.c memory.c
+mv temp.h memory.h
+mv temp.u utils.h
+sed -i '1s/^/#include <stdlib.h>\n /' memory_debug.c
+sed -i '1s/^/#include <stdbool.h>\n /' memory_debug.c
+sed -i '1s/^/#include <string.h>\n /' memory_debug.c
+sed -i '1s/^/#include <errno.h>\n /' memory_debug.c
+sed -i '1s/^/#include <stdio.h>\n /' memory_debug.c
+sed -i '1s/^/#include <stdint.h>\n /' memory_debug.c
+make memtest_debug
+valgrind --log-file=log --leak-check=full --show-leak-kinds=all --track-origins=yes ./memtest_debug 5 4 3 32 64 0
+mv mem_log.txt testlogs/mem_log_1.txt
+mv log testlogs/log_1
+
+valgrind --log-file=log --leak-check=full --show-leak-kinds=all --track-origins=yes ./memtest_debug 10 10 10 128 256 0
+mv mem_log.txt testlogs/mem_log_2.txt
+mv log testlogs/log_2
+
+valgrind --log-file=log --leak-check=full --show-leak-kinds=all --track-origins=yes ./memtest_debug 3 7 4 1 51 0
+mv mem_log.txt testlogs/mem_log_3.txt
+mv log testlogs/log_3

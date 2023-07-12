@@ -5,11 +5,13 @@ MEM=memtest
 SIMPLE=simpletest
 LIBRARY=memory.so
 DEBUG=memdebug
+MEMDEBUG=memtest_debug
 
 MEMOBJS=memtest.o memory.o
 SIMPLEOBJS=simpletest.o memory.o
 LIBRARYOBJS=memory.o
 DEBUGOBJS=simpletest.o memory_debug.o
+MEMDEBUGOBJS=memtest.o memory_debug.o
 
 LIBS=-lm
 CFLAGS=-fPIC -fanalyzer -D WINDOWS=0 -D LOGGING=1 -ggdb3 -Og -Werror -Wall -Wextra -pedantic -Wcast-align -Wcast-qual -Wdisabled-optimization -Wformat=2 -Winit-self -Wlogical-op -Wmissing-include-dirs -Wredundant-decls -Wshadow -Wstrict-overflow=5 -Wundef -Wno-unused -Wno-variadic-macros -Wno-parentheses -fdiagnostics-show-option
@@ -32,6 +34,9 @@ ${LIBRARY}: ${LIBRARYOBJS}
 ${DEBUG}: ${DEBUGOBJS}
 	${CC} ${LFLAGS} -o $@ $^
 
+${MEMDEBUG}: ${MEMDEBUGOBJS}
+	${CC} ${LFLAGS} -o $@ $^
+
 memory.o: memory.c memory.h
 
 memory_debug.o: memory_debug.c memory.h
@@ -47,5 +52,6 @@ clean:
 	rm -rf ${SIMPLE} core*
 	rm -rf ${LIBRARY} core*
 	rm -rf ${DEBUG} core*
+	rm -rf ${MEMDEBUG}
 	rm -rf memory_debug.c core*
 	rm -rf *.o core*
