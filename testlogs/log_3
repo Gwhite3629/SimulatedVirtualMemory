@@ -1,15 +1,15 @@
-==1247== Memcheck, a memory error detector
-==1247== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
-==1247== Using Valgrind-3.21.0 and LibVEX; rerun with -h for copyright info
-==1247== Command: ./memtest_debug 3 7 4 1 51 0
-==1247== Parent PID: 1185
-==1247== 
-==1247== 
-==1247== HEAP SUMMARY:
-==1247==     in use at exit: 0 bytes in 0 blocks
-==1247==   total heap usage: 4 allocs, 4 frees, 12,760 bytes allocated
-==1247== 
-==1247== All heap blocks were freed -- no leaks are possible
-==1247== 
-==1247== For lists of detected and suppressed errors, rerun with: -s
-==1247== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==3924== Memcheck, a memory error detector
+==3924== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==3924== Using Valgrind-3.21.0 and LibVEX; rerun with -h for copyright info
+==3924== Command: ./memdebug 3 7 4 1 51 0
+==3924== Parent PID: 3858
+==3924== 
+==3924== 
+==3924== HEAP SUMMARY:
+==3924==     in use at exit: 0 bytes in 0 blocks
+==3924==   total heap usage: 4 allocs, 4 frees, 12,760 bytes allocated
+==3924== 
+==3924== All heap blocks were freed -- no leaks are possible
+==3924== 
+==3924== For lists of detected and suppressed errors, rerun with: -s
+==3924== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

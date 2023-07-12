@@ -4,8 +4,8 @@ LINK=gcc
 MEM=memtest
 SIMPLE=simpletest
 LIBRARY=memory.so
-DEBUG=memdebug
-MEMDEBUG=memtest_debug
+SIMPLEDEBUG=simpledebug
+MEMDEBUG=memdebug
 
 MEMOBJS=memtest.o memory.o
 SIMPLEOBJS=simpletest.o memory.o
@@ -14,35 +14,58 @@ DEBUGOBJS=simpletest.o memory_debug.o
 MEMDEBUGOBJS=memtest.o memory_debug.o
 
 LIBS=-lm
-CFLAGS=-fPIC -fanalyzer -D WINDOWS=0 -D LOGGING=1 -ggdb3 -Og -Werror -Wall -Wextra -pedantic -Wcast-align -Wcast-qual -Wdisabled-optimization -Wformat=2 -Winit-self -Wlogical-op -Wmissing-include-dirs -Wredundant-decls -Wshadow -Wstrict-overflow=5 -Wundef -Wno-unused -Wno-variadic-macros -Wno-parentheses -fdiagnostics-show-option
+CFLAGS=-fPIC -D WINDOWS=0 -D LOGGING=1 -Werror -Wall -Wextra -pedantic
+DFLAGS=-fPIC -fanalyzer -D WINDOWS=0 -D LOGGING=1 -ggdb3 -Og -Werror -Wall -Wextra -pedantic -Wcast-align -Wcast-qual -Wdisabled-optimization -Wformat=2 -Winit-self -Wlogical-op -Wmissing-include-dirs -Wredundant-decls -Wshadow -Wstrict-overflow=5 -Wundef -Wno-unused -Wno-variadic-macros -Wno-parentheses -fdiagnostics-show-option
+BFLAGS=-O3
 LFLAGS=-ggdb3 -Og
-OFLAGS=-fPIC -ggdb3 -Og -rdynamic
+OFLAGS=-fPIC -O3 -rdynamic
 
 all:${MEM} ${SIMPLE} ${LIBRARY}
 
-debug:${DEBUG} ${MEMDEBUG}
+all : CFLAGS += ${BFLAGS}
+
+debug : CFLAGS += ${DFLAGS}
+
+COMPdebug:${MEMDEBUG} ${SIMPLEDEBUG}
+
+.PHONY : debug COMPdebug
 
 ${MEM}: ${MEMOBJS}
-	${CC} ${LFLAGS} -o $@ $^
+	${CC} -o $@ $^
 
 ${SIMPLE}: ${SIMPLEOBJS}
-	${CC} ${LFLAGS} -o $@ $^
+	${CC} -o $@ $^
 
 ${LIBRARY}: ${LIBRARYOBJS}
 	${CC} ${OFLAGS} -shared -Lstatic -o $@ $^
 
-${DEBUG}: ${DEBUGOBJS}
+debug:
+	make clean
+	cp memory.c temp.c
+	cp memory.h temp.h
+	cp utils.h temp.u
+	sed -e '1,6d' < memory.c > temp && mv temp memory.c
+	sed -e '4,8d' < memory.h > temp && mv temp memory.h
+	sed -e '4,7d' < utils.h > temp && mv temp utils.h
+	gcc -E -P -C -D LOGGING=1 -D WINDOWS=0 memory.c > memory_debug.c
+	mv temp.c memory.c
+	mv temp.h memory.h
+	mv temp.u utils.h
+	sed -i '1s/^/#include <stdlib.h>\n /' memory_debug.c
+	sed -i '1s/^/#include <stdbool.h>\n /' memory_debug.c
+	sed -i '1s/^/#include <string.h>\n /' memory_debug.c
+	sed -i '1s/^/#include <stdio.h>\n /' memory_debug.c
+	sed -i '1s/^/#include <stdint.h>\n /' memory_debug.c
+	sed -i '1s/^/#include <errno.h>\n /' memory_debug.c
+	make COMPdebug
+
+${SIMPLEDEBUG}: ${DEBUGOBJS}
 	${CC} ${LFLAGS} -o $@ $^
 
 ${MEMDEBUG}: ${MEMDEBUGOBJS}
 	${CC} ${LFLAGS} -o $@ $^
 
-memory.o: memory.c memory.h
-
-memory_debug.o: memory_debug.c memory.h
-
 memtest.o: memtest.c
-
 simpletest.o: simpletest.c
 
 .PHONY : clean
@@ -51,7 +74,7 @@ clean:
 	rm -rf ${MEM} core*
 	rm -rf ${SIMPLE} core*
 	rm -rf ${LIBRARY} core*
-	rm -rf ${DEBUG} core*
-	rm -rf ${MEMDEBUG}
+	rm -rf ${SIMPLEDEBUG} core*
+	rm -rf ${MEMDEBUG} core*
 	rm -rf memory_debug.c core*
 	rm -rf *.o core*

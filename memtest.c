@@ -7,7 +7,6 @@
 
 int main(int argc, char *argv[])
 {
-    int n_mixups = 0;
     int min_size = 0;
     int max_size = 0;
 
@@ -33,7 +32,6 @@ int main(int argc, char *argv[])
     n_ints = atoi(argv[3]);
     min_size = atoi(argv[4]);
     max_size = atoi(argv[5]);
-    n_mixups = atoi(argv[6]);
 
     new(f_arrays, n_floats, float *);
     new(b_arrays, n_bools, bool *);

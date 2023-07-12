@@ -119,7 +119,7 @@ inline heap_t *create(int alignment, int size, const char *name)
     // Heap info
     h.alignment = alignment;
     h.n_regions = 2;
-    strcpy(h.name, "GLOBAL");
+    strcpy(h.name, name);
     h.regions = reg_arr.addr;
 
     // Smart ptr for remaining free space
@@ -349,7 +349,6 @@ exit:
 
 inline void *alloc(heap_t *h, int n, const char *name)
 {
-    int reg_idx;
     int i = 0;
     void *ptr = NULL;
     int alloced = 0;
@@ -386,7 +385,10 @@ inline void *alloc(heap_t *h, int n, const char *name)
             usr_smart.size = n;
             usr_smart.base = h->regions[i]->base_addr;
             usr_smart.flag = RESERVED;
-            strncpy(usr_smart.name, name, 14);
+            #pragma GCC diagnostic push
+            #pragma GCC diagnostic ignored "-Wstringop-truncation"
+            strncpy(usr_smart.name, name, 13);
+            #pragma GCC diagnostic pop
 
             memcpy(((char *)new_free.addr - CHUNK_INFO_SIZE), &new_free, CHUNK_INFO_SIZE);
             memcpy(((char *)usr_smart.addr - CHUNK_INFO_SIZE), &usr_smart, CHUNK_INFO_SIZE);
@@ -519,14 +521,12 @@ exit:
 inline void cull(heap_t *h, void *ptr)
 {
     int found = 0;
-    int ptr_idx = -1;
     int i, j = 0;
 
     for (i = 1; i < h->n_regions; i++) {
         for (j = 0; j < h->regions[i]->n_chunks; j++) {
             if (h->regions[i]->chunks[j]->addr == ptr) {
                 found = 1;
-                ptr_idx = j;
                 break;
             }
         }
@@ -608,7 +608,6 @@ inline void cull(heap_t *h, void *ptr)
 void *change(heap_t *h, void *ptr, int size)
 {
     int found = 0;
-    int ptr_idx = -1;
     int i, j = 0;
 
     void *new_ptr = NULL;
@@ -617,7 +616,6 @@ void *change(heap_t *h, void *ptr, int size)
         for (j = 0; j < h->regions[i]->n_chunks; j++) {
             if (h->regions[i]->chunks[j]->addr == ptr) {
                 found = 1;
-                ptr_idx = j;
                 break;
             }
         }

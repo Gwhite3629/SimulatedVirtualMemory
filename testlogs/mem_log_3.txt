@@ -1,7 +1,7 @@
 
 CREATE
 --------------------------------------------------------------------------------
-Heap:           GLOBAL
+Heap:           global
 
 Region:        KHEAP //        0x4a4f000 : 4096 : 315 : 5
 
@@ -21,7 +21,7 @@ Region:       HEAP_1 //        0x4a51000 : 4096 : 176 : 3
 
 ALLOC
 --------------------------------------------------------------------------------
-Heap:           GLOBAL
+Heap:           global
 
 Region:        KHEAP //        0x4a4f000 : 4096 : 315 : 5
 
@@ -42,7 +42,7 @@ Region:       HEAP_1 //        0x4a51000 : 4096 : 246 : 4
 
 ALLOC
 --------------------------------------------------------------------------------
-Heap:           GLOBAL
+Heap:           global
 
 Region:        KHEAP //        0x4a4f000 : 4096 : 315 : 5
 
@@ -64,7 +64,7 @@ Region:       HEAP_1 //        0x4a51000 : 4096 : 348 : 5
 
 ALLOC
 --------------------------------------------------------------------------------
-Heap:           GLOBAL
+Heap:           global
 
 Region:        KHEAP //        0x4a4f000 : 4096 : 315 : 5
 
@@ -87,7 +87,7 @@ Region:       HEAP_1 //        0x4a51000 : 4096 : 426 : 6
 
 ALLOC
 --------------------------------------------------------------------------------
-Heap:           GLOBAL
+Heap:           global
 
 Region:        KHEAP //        0x4a4f000 : 4096 : 315 : 5
 
@@ -111,7 +111,7 @@ Region:       HEAP_1 //        0x4a51000 : 4096 : 484 : 7
 
 ALLOC
 --------------------------------------------------------------------------------
-Heap:           GLOBAL
+Heap:           global
 
 Region:        KHEAP //        0x4a4f000 : 4096 : 315 : 5
 
@@ -136,7 +136,7 @@ Region:       HEAP_1 //        0x4a51000 : 4096 : 558 : 8
 
 ALLOC
 --------------------------------------------------------------------------------
-Heap:           GLOBAL
+Heap:           global
 
 Region:        KHEAP //        0x4a4f000 : 4096 : 315 : 5
 
@@ -162,7 +162,7 @@ Region:       HEAP_1 //        0x4a51000 : 4096 : 620 : 9
 
 ALLOC
 --------------------------------------------------------------------------------
-Heap:           GLOBAL
+Heap:           global
 
 Region:        KHEAP //        0x4a4f000 : 4096 : 315 : 5
 
@@ -172,7 +172,7 @@ Region:        KHEAP //        0x4a4f000 : 4096 : 315 : 5
 	         REG_ARR //         RESERVED @ 0x4a4f0b7 : 16
 	      KHEAP_FREE //      UNALLOCATED @ 0x4a4f0ed : 3781
 
-Region:       HEAP_1 //        0x4a51000 : 4096 : 810 : 10
+Region:       HEAP_1 //        0x4a51000 : 4096 : 790 : 10
 
 	       CHUNK_ARR //         RESERVED @ 0x4a51fb0 : 80
 	         REG_PTR //         RESERVED @ 0x4a51026 : 38
@@ -182,14 +182,14 @@ Region:       HEAP_1 //        0x4a51000 : 4096 : 810 : 10
 	         f_sizes //         RESERVED @ 0x4a51154 : 12
 	         b_sizes //         RESERVED @ 0x4a51186 : 28
 	         i_sizes //         RESERVED @ 0x4a511c8 : 16
-	     f_arrays[i] //         RESERVED @ 0x4a511fe : 144
-	       HEAP_FREE //      UNALLOCATED @ 0x4a512b4 : 3286
+	     f_arrays[i] //         RESERVED @ 0x4a511fe : 124
+	       HEAP_FREE //      UNALLOCATED @ 0x4a512a0 : 3306
 --------------------------------------------------------------------------------
 
 
 ALLOC
 --------------------------------------------------------------------------------
-Heap:           GLOBAL
+Heap:           global
 
 Region:        KHEAP //        0x4a4f000 : 4096 : 315 : 5
 
@@ -199,7 +199,7 @@ Region:        KHEAP //        0x4a4f000 : 4096 : 315 : 5
 	         REG_ARR //         RESERVED @ 0x4a4f0b7 : 16
 	      KHEAP_FREE //      UNALLOCATED @ 0x4a4f0ed : 3781
 
-Region:       HEAP_1 //        0x4a51000 : 4096 : 896 : 11
+Region:       HEAP_1 //        0x4a51000 : 4096 : 924 : 11
 
 	       CHUNK_ARR //         RESERVED @ 0x4a51fa8 : 88
 	         REG_PTR //         RESERVED @ 0x4a51026 : 38
@@ -209,15 +209,15 @@ Region:       HEAP_1 //        0x4a51000 : 4096 : 896 : 11
 	         f_sizes //         RESERVED @ 0x4a51154 : 12
 	         b_sizes //         RESERVED @ 0x4a51186 : 28
 	         i_sizes //         RESERVED @ 0x4a511c8 : 16
-	     f_arrays[i] //         RESERVED @ 0x4a511fe : 144
-	     f_arrays[i] //         RESERVED @ 0x4a512b4 : 40
-	       HEAP_FREE //      UNALLOCATED @ 0x4a51302 : 3200
+	     f_arrays[i] //         RESERVED @ 0x4a511fe : 124
+	     f_arrays[i] //         RESERVED @ 0x4a512a0 : 88
+	       HEAP_FREE //      UNALLOCATED @ 0x4a5131e : 3172
 --------------------------------------------------------------------------------
 
 
 ALLOC
 --------------------------------------------------------------------------------
-Heap:           GLOBAL
+Heap:           global
 
 Region:        KHEAP //        0x4a4f000 : 4096 : 315 : 5
 
@@ -227,7 +227,7 @@ Region:        KHEAP //        0x4a4f000 : 4096 : 315 : 5
 	         REG_ARR //         RESERVED @ 0x4a4f0b7 : 16
 	      KHEAP_FREE //      UNALLOCATED @ 0x4a4f0ed : 3781
 
-Region:       HEAP_1 //        0x4a51000 : 4096 : 970 : 12
+Region:       HEAP_1 //        0x4a51000 : 4096 : 1130 : 12
 
 	       CHUNK_ARR //         RESERVED @ 0x4a51fa0 : 96
 	         REG_PTR //         RESERVED @ 0x4a51026 : 38
@@ -237,16 +237,16 @@ Region:       HEAP_1 //        0x4a51000 : 4096 : 970 : 12
 	         f_sizes //         RESERVED @ 0x4a51154 : 12
 	         b_sizes //         RESERVED @ 0x4a51186 : 28
 	         i_sizes //         RESERVED @ 0x4a511c8 : 16
-	     f_arrays[i] //         RESERVED @ 0x4a511fe : 144
-	     f_arrays[i] //         RESERVED @ 0x4a512b4 : 40
-	     f_arrays[i] //         RESERVED @ 0x4a51302 : 28
-	       HEAP_FREE //      UNALLOCATED @ 0x4a51344 : 3126
+	     f_arrays[i] //         RESERVED @ 0x4a511fe : 124
+	     f_arrays[i] //         RESERVED @ 0x4a512a0 : 88
+	     f_arrays[i] //         RESERVED @ 0x4a5131e : 160
+	       HEAP_FREE //      UNALLOCATED @ 0x4a513e4 : 2966
 --------------------------------------------------------------------------------
 
 
 ALLOC
 --------------------------------------------------------------------------------
-Heap:           GLOBAL
+Heap:           global
 
 Region:        KHEAP //        0x4a4f000 : 4096 : 315 : 5
 
@@ -256,7 +256,7 @@ Region:        KHEAP //        0x4a4f000 : 4096 : 315 : 5
 	         REG_ARR //         RESERVED @ 0x4a4f0b7 : 16
 	      KHEAP_FREE //      UNALLOCATED @ 0x4a4f0ed : 3781
 
-Region:       HEAP_1 //        0x4a51000 : 4096 : 1034 : 13
+Region:       HEAP_1 //        0x4a51000 : 4096 : 1185 : 13
 
 	       CHUNK_ARR //         RESERVED @ 0x4a51f98 : 104
 	         REG_PTR //         RESERVED @ 0x4a51026 : 38
@@ -266,17 +266,17 @@ Region:       HEAP_1 //        0x4a51000 : 4096 : 1034 : 13
 	         f_sizes //         RESERVED @ 0x4a51154 : 12
 	         b_sizes //         RESERVED @ 0x4a51186 : 28
 	         i_sizes //         RESERVED @ 0x4a511c8 : 16
-	     f_arrays[i] //         RESERVED @ 0x4a511fe : 144
-	     f_arrays[i] //         RESERVED @ 0x4a512b4 : 40
-	     f_arrays[i] //         RESERVED @ 0x4a51302 : 28
-	     b_arrays[i] //         RESERVED @ 0x4a51344 : 18
-	       HEAP_FREE //      UNALLOCATED @ 0x4a5137c : 3062
+	     f_arrays[i] //         RESERVED @ 0x4a511fe : 124
+	     f_arrays[i] //         RESERVED @ 0x4a512a0 : 88
+	     f_arrays[i] //         RESERVED @ 0x4a5131e : 160
+	     b_arrays[i] //         RESERVED @ 0x4a513e4 : 9
+	       HEAP_FREE //      UNALLOCATED @ 0x4a51413 : 2911
 --------------------------------------------------------------------------------
 
 
 ALLOC
 --------------------------------------------------------------------------------
-Heap:           GLOBAL
+Heap:           global
 
 Region:        KHEAP //        0x4a4f000 : 4096 : 315 : 5
 
@@ -286,7 +286,7 @@ Region:        KHEAP //        0x4a4f000 : 4096 : 315 : 5
 	         REG_ARR //         RESERVED @ 0x4a4f0b7 : 16
 	      KHEAP_FREE //      UNALLOCATED @ 0x4a4f0ed : 3781
 
-Region:       HEAP_1 //        0x4a51000 : 4096 : 1118 : 14
+Region:       HEAP_1 //        0x4a51000 : 4096 : 1232 : 14
 
 	       CHUNK_ARR //         RESERVED @ 0x4a51f90 : 112
 	         REG_PTR //         RESERVED @ 0x4a51026 : 38
@@ -296,18 +296,18 @@ Region:       HEAP_1 //        0x4a51000 : 4096 : 1118 : 14
 	         f_sizes //         RESERVED @ 0x4a51154 : 12
 	         b_sizes //         RESERVED @ 0x4a51186 : 28
 	         i_sizes //         RESERVED @ 0x4a511c8 : 16
-	     f_arrays[i] //         RESERVED @ 0x4a511fe : 144
-	     f_arrays[i] //         RESERVED @ 0x4a512b4 : 40
-	     f_arrays[i] //         RESERVED @ 0x4a51302 : 28
-	     b_arrays[i] //         RESERVED @ 0x4a51344 : 18
-	     b_arrays[i] //         RESERVED @ 0x4a5137c : 38
-	       HEAP_FREE //      UNALLOCATED @ 0x4a513c8 : 2978
+	     f_arrays[i] //         RESERVED @ 0x4a511fe : 124
+	     f_arrays[i] //         RESERVED @ 0x4a512a0 : 88
+	     f_arrays[i] //         RESERVED @ 0x4a5131e : 160
+	     b_arrays[i] //         RESERVED @ 0x4a513e4 : 9
+	     b_arrays[i] //         RESERVED @ 0x4a51413 : 1
+	       HEAP_FREE //      UNALLOCATED @ 0x4a5143a : 2864
 --------------------------------------------------------------------------------
 
 
 ALLOC
 --------------------------------------------------------------------------------
-Heap:           GLOBAL
+Heap:           global
 
 Region:        KHEAP //        0x4a4f000 : 4096 : 315 : 5
 
@@ -317,7 +317,7 @@ Region:        KHEAP //        0x4a4f000 : 4096 : 315 : 5
 	         REG_ARR //         RESERVED @ 0x4a4f0b7 : 16
 	      KHEAP_FREE //      UNALLOCATED @ 0x4a4f0ed : 3781
 
-Region:       HEAP_1 //        0x4a51000 : 4096 : 1182 : 15
+Region:       HEAP_1 //        0x4a51000 : 4096 : 1325 : 15
 
 	       CHUNK_ARR //         RESERVED @ 0x4a51f88 : 120
 	         REG_PTR //         RESERVED @ 0x4a51026 : 38
@@ -327,19 +327,19 @@ Region:       HEAP_1 //        0x4a51000 : 4096 : 1182 : 15
 	         f_sizes //         RESERVED @ 0x4a51154 : 12
 	         b_sizes //         RESERVED @ 0x4a51186 : 28
 	         i_sizes //         RESERVED @ 0x4a511c8 : 16
-	     f_arrays[i] //         RESERVED @ 0x4a511fe : 144
-	     f_arrays[i] //         RESERVED @ 0x4a512b4 : 40
-	     f_arrays[i] //         RESERVED @ 0x4a51302 : 28
-	     b_arrays[i] //         RESERVED @ 0x4a51344 : 18
-	     b_arrays[i] //         RESERVED @ 0x4a5137c : 38
-	     b_arrays[i] //         RESERVED @ 0x4a513c8 : 18
-	       HEAP_FREE //      UNALLOCATED @ 0x4a51400 : 2914
+	     f_arrays[i] //         RESERVED @ 0x4a511fe : 124
+	     f_arrays[i] //         RESERVED @ 0x4a512a0 : 88
+	     f_arrays[i] //         RESERVED @ 0x4a5131e : 160
+	     b_arrays[i] //         RESERVED @ 0x4a513e4 : 9
+	     b_arrays[i] //         RESERVED @ 0x4a51413 : 1
+	     b_arrays[i] //         RESERVED @ 0x4a5143a : 47
+	       HEAP_FREE //      UNALLOCATED @ 0x4a5148f : 2771
 --------------------------------------------------------------------------------
 
 
 ALLOC
 --------------------------------------------------------------------------------
-Heap:           GLOBAL
+Heap:           global
 
 Region:        KHEAP //        0x4a4f000 : 4096 : 315 : 5
 
@@ -349,7 +349,7 @@ Region:        KHEAP //        0x4a4f000 : 4096 : 315 : 5
 	         REG_ARR //         RESERVED @ 0x4a4f0b7 : 16
 	      KHEAP_FREE //      UNALLOCATED @ 0x4a4f0ed : 3781
 
-Region:       HEAP_1 //        0x4a51000 : 4096 : 1254 : 16
+Region:       HEAP_1 //        0x4a51000 : 4096 : 1378 : 16
 
 	       CHUNK_ARR //         RESERVED @ 0x4a51f80 : 128
 	         REG_PTR //         RESERVED @ 0x4a51026 : 38
@@ -359,20 +359,20 @@ Region:       HEAP_1 //        0x4a51000 : 4096 : 1254 : 16
 	         f_sizes //         RESERVED @ 0x4a51154 : 12
 	         b_sizes //         RESERVED @ 0x4a51186 : 28
 	         i_sizes //         RESERVED @ 0x4a511c8 : 16
-	     f_arrays[i] //         RESERVED @ 0x4a511fe : 144
-	     f_arrays[i] //         RESERVED @ 0x4a512b4 : 40
-	     f_arrays[i] //         RESERVED @ 0x4a51302 : 28
-	     b_arrays[i] //         RESERVED @ 0x4a51344 : 18
-	     b_arrays[i] //         RESERVED @ 0x4a5137c : 38
-	     b_arrays[i] //         RESERVED @ 0x4a513c8 : 18
-	     b_arrays[i] //         RESERVED @ 0x4a51400 : 26
-	       HEAP_FREE //      UNALLOCATED @ 0x4a51440 : 2842
+	     f_arrays[i] //         RESERVED @ 0x4a511fe : 124
+	     f_arrays[i] //         RESERVED @ 0x4a512a0 : 88
+	     f_arrays[i] //         RESERVED @ 0x4a5131e : 160
+	     b_arrays[i] //         RESERVED @ 0x4a513e4 : 9
+	     b_arrays[i] //         RESERVED @ 0x4a51413 : 1
+	     b_arrays[i] //         RESERVED @ 0x4a5143a : 47
+	     b_arrays[i] //         RESERVED @ 0x4a5148f : 7
+	       HEAP_FREE //      UNALLOCATED @ 0x4a514bc : 2718
 --------------------------------------------------------------------------------
 
 
 ALLOC
 --------------------------------------------------------------------------------
-Heap:           GLOBAL
+Heap:           global
 
 Region:        KHEAP //        0x4a4f000 : 4096 : 315 : 5
 
@@ -382,7 +382,7 @@ Region:        KHEAP //        0x4a4f000 : 4096 : 315 : 5
 	         REG_ARR //         RESERVED @ 0x4a4f0b7 : 16
 	      KHEAP_FREE //      UNALLOCATED @ 0x4a4f0ed : 3781
 
-Region:       HEAP_1 //        0x4a51000 : 4096 : 1342 : 17
+Region:       HEAP_1 //        0x4a51000 : 4096 : 1454 : 17
 
 	       CHUNK_ARR //         RESERVED @ 0x4a51f78 : 136
 	         REG_PTR //         RESERVED @ 0x4a51026 : 38
@@ -392,21 +392,21 @@ Region:       HEAP_1 //        0x4a51000 : 4096 : 1342 : 17
 	         f_sizes //         RESERVED @ 0x4a51154 : 12
 	         b_sizes //         RESERVED @ 0x4a51186 : 28
 	         i_sizes //         RESERVED @ 0x4a511c8 : 16
-	     f_arrays[i] //         RESERVED @ 0x4a511fe : 144
-	     f_arrays[i] //         RESERVED @ 0x4a512b4 : 40
-	     f_arrays[i] //         RESERVED @ 0x4a51302 : 28
-	     b_arrays[i] //         RESERVED @ 0x4a51344 : 18
-	     b_arrays[i] //         RESERVED @ 0x4a5137c : 38
-	     b_arrays[i] //         RESERVED @ 0x4a513c8 : 18
-	     b_arrays[i] //         RESERVED @ 0x4a51400 : 26
-	     b_arrays[i] //         RESERVED @ 0x4a51440 : 42
-	       HEAP_FREE //      UNALLOCATED @ 0x4a51490 : 2754
+	     f_arrays[i] //         RESERVED @ 0x4a511fe : 124
+	     f_arrays[i] //         RESERVED @ 0x4a512a0 : 88
+	     f_arrays[i] //         RESERVED @ 0x4a5131e : 160
+	     b_arrays[i] //         RESERVED @ 0x4a513e4 : 9
+	     b_arrays[i] //         RESERVED @ 0x4a51413 : 1
+	     b_arrays[i] //         RESERVED @ 0x4a5143a : 47
+	     b_arrays[i] //         RESERVED @ 0x4a5148f : 7
+	     b_arrays[i] //         RESERVED @ 0x4a514bc : 30
+	       HEAP_FREE //      UNALLOCATED @ 0x4a51500 : 2642
 --------------------------------------------------------------------------------
 
 
 ALLOC
 --------------------------------------------------------------------------------
-Heap:           GLOBAL
+Heap:           global
 
 Region:        KHEAP //        0x4a4f000 : 4096 : 315 : 5
 
@@ -416,7 +416,7 @@ Region:        KHEAP //        0x4a4f000 : 4096 : 315 : 5
 	         REG_ARR //         RESERVED @ 0x4a4f0b7 : 16
 	      KHEAP_FREE //      UNALLOCATED @ 0x4a4f0ed : 3781
 
-Region:       HEAP_1 //        0x4a51000 : 4096 : 1392 : 18
+Region:       HEAP_1 //        0x4a51000 : 4096 : 1516 : 18
 
 	       CHUNK_ARR //         RESERVED @ 0x4a51f70 : 144
 	         REG_PTR //         RESERVED @ 0x4a51026 : 38
@@ -426,22 +426,22 @@ Region:       HEAP_1 //        0x4a51000 : 4096 : 1392 : 18
 	         f_sizes //         RESERVED @ 0x4a51154 : 12
 	         b_sizes //         RESERVED @ 0x4a51186 : 28
 	         i_sizes //         RESERVED @ 0x4a511c8 : 16
-	     f_arrays[i] //         RESERVED @ 0x4a511fe : 144
-	     f_arrays[i] //         RESERVED @ 0x4a512b4 : 40
-	     f_arrays[i] //         RESERVED @ 0x4a51302 : 28
-	     b_arrays[i] //         RESERVED @ 0x4a51344 : 18
-	     b_arrays[i] //         RESERVED @ 0x4a5137c : 38
-	     b_arrays[i] //         RESERVED @ 0x4a513c8 : 18
-	     b_arrays[i] //         RESERVED @ 0x4a51400 : 26
-	     b_arrays[i] //         RESERVED @ 0x4a51440 : 42
-	     b_arrays[i] //         RESERVED @ 0x4a51490 : 4
-	       HEAP_FREE //      UNALLOCATED @ 0x4a514ba : 2704
+	     f_arrays[i] //         RESERVED @ 0x4a511fe : 124
+	     f_arrays[i] //         RESERVED @ 0x4a512a0 : 88
+	     f_arrays[i] //         RESERVED @ 0x4a5131e : 160
+	     b_arrays[i] //         RESERVED @ 0x4a513e4 : 9
+	     b_arrays[i] //         RESERVED @ 0x4a51413 : 1
+	     b_arrays[i] //         RESERVED @ 0x4a5143a : 47
+	     b_arrays[i] //         RESERVED @ 0x4a5148f : 7
+	     b_arrays[i] //         RESERVED @ 0x4a514bc : 30
+	     b_arrays[i] //         RESERVED @ 0x4a51500 : 16
+	       HEAP_FREE //      UNALLOCATED @ 0x4a51536 : 2580
 --------------------------------------------------------------------------------
 
 
 ALLOC
 --------------------------------------------------------------------------------
-Heap:           GLOBAL
+Heap:           global
 
 Region:        KHEAP //        0x4a4f000 : 4096 : 315 : 5
 
@@ -451,7 +451,7 @@ Region:        KHEAP //        0x4a4f000 : 4096 : 315 : 5
 	         REG_ARR //         RESERVED @ 0x4a4f0b7 : 16
 	      KHEAP_FREE //      UNALLOCATED @ 0x4a4f0ed : 3781
 
-Region:       HEAP_1 //        0x4a51000 : 4096 : 1474 : 19
+Region:       HEAP_1 //        0x4a51000 : 4096 : 1583 : 19
 
 	       CHUNK_ARR //         RESERVED @ 0x4a51f68 : 152
 	         REG_PTR //         RESERVED @ 0x4a51026 : 38
@@ -461,23 +461,23 @@ Region:       HEAP_1 //        0x4a51000 : 4096 : 1474 : 19
 	         f_sizes //         RESERVED @ 0x4a51154 : 12
 	         b_sizes //         RESERVED @ 0x4a51186 : 28
 	         i_sizes //         RESERVED @ 0x4a511c8 : 16
-	     f_arrays[i] //         RESERVED @ 0x4a511fe : 144
-	     f_arrays[i] //         RESERVED @ 0x4a512b4 : 40
-	     f_arrays[i] //         RESERVED @ 0x4a51302 : 28
-	     b_arrays[i] //         RESERVED @ 0x4a51344 : 18
-	     b_arrays[i] //         RESERVED @ 0x4a5137c : 38
-	     b_arrays[i] //         RESERVED @ 0x4a513c8 : 18
-	     b_arrays[i] //         RESERVED @ 0x4a51400 : 26
-	     b_arrays[i] //         RESERVED @ 0x4a51440 : 42
-	     b_arrays[i] //         RESERVED @ 0x4a51490 : 4
-	     b_arrays[i] //         RESERVED @ 0x4a514ba : 36
-	       HEAP_FREE //      UNALLOCATED @ 0x4a51504 : 2622
+	     f_arrays[i] //         RESERVED @ 0x4a511fe : 124
+	     f_arrays[i] //         RESERVED @ 0x4a512a0 : 88
+	     f_arrays[i] //         RESERVED @ 0x4a5131e : 160
+	     b_arrays[i] //         RESERVED @ 0x4a513e4 : 9
+	     b_arrays[i] //         RESERVED @ 0x4a51413 : 1
+	     b_arrays[i] //         RESERVED @ 0x4a5143a : 47
+	     b_arrays[i] //         RESERVED @ 0x4a5148f : 7
+	     b_arrays[i] //         RESERVED @ 0x4a514bc : 30
+	     b_arrays[i] //         RESERVED @ 0x4a51500 : 16
+	     b_arrays[i] //         RESERVED @ 0x4a51536 : 21
+	       HEAP_FREE //      UNALLOCATED @ 0x4a51571 : 2513
 --------------------------------------------------------------------------------
 
 
 ALLOC
 --------------------------------------------------------------------------------
-Heap:           GLOBAL
+Heap:           global
 
 Region:        KHEAP //        0x4a4f000 : 4096 : 315 : 5
 
@@ -487,7 +487,7 @@ Region:        KHEAP //        0x4a4f000 : 4096 : 315 : 5
 	         REG_ARR //         RESERVED @ 0x4a4f0b7 : 16
 	      KHEAP_FREE //      UNALLOCATED @ 0x4a4f0ed : 3781
 
-Region:       HEAP_1 //        0x4a51000 : 4096 : 1620 : 20
+Region:       HEAP_1 //        0x4a51000 : 4096 : 1673 : 20
 
 	       CHUNK_ARR //         RESERVED @ 0x4a51f60 : 160
 	         REG_PTR //         RESERVED @ 0x4a51026 : 38
@@ -497,24 +497,24 @@ Region:       HEAP_1 //        0x4a51000 : 4096 : 1620 : 20
 	         f_sizes //         RESERVED @ 0x4a51154 : 12
 	         b_sizes //         RESERVED @ 0x4a51186 : 28
 	         i_sizes //         RESERVED @ 0x4a511c8 : 16
-	     f_arrays[i] //         RESERVED @ 0x4a511fe : 144
-	     f_arrays[i] //         RESERVED @ 0x4a512b4 : 40
-	     f_arrays[i] //         RESERVED @ 0x4a51302 : 28
-	     b_arrays[i] //         RESERVED @ 0x4a51344 : 18
-	     b_arrays[i] //         RESERVED @ 0x4a5137c : 38
-	     b_arrays[i] //         RESERVED @ 0x4a513c8 : 18
-	     b_arrays[i] //         RESERVED @ 0x4a51400 : 26
-	     b_arrays[i] //         RESERVED @ 0x4a51440 : 42
-	     b_arrays[i] //         RESERVED @ 0x4a51490 : 4
-	     b_arrays[i] //         RESERVED @ 0x4a514ba : 36
-	     i_arrays[i] //         RESERVED @ 0x4a51504 : 100
-	       HEAP_FREE //      UNALLOCATED @ 0x4a5158e : 2476
+	     f_arrays[i] //         RESERVED @ 0x4a511fe : 124
+	     f_arrays[i] //         RESERVED @ 0x4a512a0 : 88
+	     f_arrays[i] //         RESERVED @ 0x4a5131e : 160
+	     b_arrays[i] //         RESERVED @ 0x4a513e4 : 9
+	     b_arrays[i] //         RESERVED @ 0x4a51413 : 1
+	     b_arrays[i] //         RESERVED @ 0x4a5143a : 47
+	     b_arrays[i] //         RESERVED @ 0x4a5148f : 7
+	     b_arrays[i] //         RESERVED @ 0x4a514bc : 30
+	     b_arrays[i] //         RESERVED @ 0x4a51500 : 16
+	     b_arrays[i] //         RESERVED @ 0x4a51536 : 21
+	     i_arrays[i] //         RESERVED @ 0x4a51571 : 44
+	       HEAP_FREE //      UNALLOCATED @ 0x4a515c3 : 2423
 --------------------------------------------------------------------------------
 
 
 ALLOC
 --------------------------------------------------------------------------------
-Heap:           GLOBAL
+Heap:           global
 
 Region:        KHEAP //        0x4a4f000 : 4096 : 315 : 5
 
@@ -524,7 +524,7 @@ Region:        KHEAP //        0x4a4f000 : 4096 : 315 : 5
 	         REG_ARR //         RESERVED @ 0x4a4f0b7 : 16
 	      KHEAP_FREE //      UNALLOCATED @ 0x4a4f0ed : 3781
 
-Region:       HEAP_1 //        0x4a51000 : 4096 : 1794 : 21
+Region:       HEAP_1 //        0x4a51000 : 4096 : 1807 : 21
 
 	       CHUNK_ARR //         RESERVED @ 0x4a51f58 : 168
 	         REG_PTR //         RESERVED @ 0x4a51026 : 38
@@ -534,25 +534,25 @@ Region:       HEAP_1 //        0x4a51000 : 4096 : 1794 : 21
 	         f_sizes //         RESERVED @ 0x4a51154 : 12
 	         b_sizes //         RESERVED @ 0x4a51186 : 28
 	         i_sizes //         RESERVED @ 0x4a511c8 : 16
-	     f_arrays[i] //         RESERVED @ 0x4a511fe : 144
-	     f_arrays[i] //         RESERVED @ 0x4a512b4 : 40
-	     f_arrays[i] //         RESERVED @ 0x4a51302 : 28
-	     b_arrays[i] //         RESERVED @ 0x4a51344 : 18
-	     b_arrays[i] //         RESERVED @ 0x4a5137c : 38
-	     b_arrays[i] //         RESERVED @ 0x4a513c8 : 18
-	     b_arrays[i] //         RESERVED @ 0x4a51400 : 26
-	     b_arrays[i] //         RESERVED @ 0x4a51440 : 42
-	     b_arrays[i] //         RESERVED @ 0x4a51490 : 4
-	     b_arrays[i] //         RESERVED @ 0x4a514ba : 36
-	     i_arrays[i] //         RESERVED @ 0x4a51504 : 100
-	     i_arrays[i] //         RESERVED @ 0x4a5158e : 128
-	       HEAP_FREE //      UNALLOCATED @ 0x4a51634 : 2302
+	     f_arrays[i] //         RESERVED @ 0x4a511fe : 124
+	     f_arrays[i] //         RESERVED @ 0x4a512a0 : 88
+	     f_arrays[i] //         RESERVED @ 0x4a5131e : 160
+	     b_arrays[i] //         RESERVED @ 0x4a513e4 : 9
+	     b_arrays[i] //         RESERVED @ 0x4a51413 : 1
+	     b_arrays[i] //         RESERVED @ 0x4a5143a : 47
+	     b_arrays[i] //         RESERVED @ 0x4a5148f : 7
+	     b_arrays[i] //         RESERVED @ 0x4a514bc : 30
+	     b_arrays[i] //         RESERVED @ 0x4a51500 : 16
+	     b_arrays[i] //         RESERVED @ 0x4a51536 : 21
+	     i_arrays[i] //         RESERVED @ 0x4a51571 : 44
+	     i_arrays[i] //         RESERVED @ 0x4a515c3 : 88
+	       HEAP_FREE //      UNALLOCATED @ 0x4a51641 : 2289
 --------------------------------------------------------------------------------
 
 
 ALLOC
 --------------------------------------------------------------------------------
-Heap:           GLOBAL
+Heap:           global
 
 Region:        KHEAP //        0x4a4f000 : 4096 : 315 : 5
 
@@ -562,7 +562,7 @@ Region:        KHEAP //        0x4a4f000 : 4096 : 315 : 5
 	         REG_ARR //         RESERVED @ 0x4a4f0b7 : 16
 	      KHEAP_FREE //      UNALLOCATED @ 0x4a4f0ed : 3781
 
-Region:       HEAP_1 //        0x4a51000 : 4096 : 2024 : 22
+Region:       HEAP_1 //        0x4a51000 : 4096 : 1997 : 22
 
 	       CHUNK_ARR //         RESERVED @ 0x4a51f50 : 176
 	         REG_PTR //         RESERVED @ 0x4a51026 : 38
@@ -572,26 +572,26 @@ Region:       HEAP_1 //        0x4a51000 : 4096 : 2024 : 22
 	         f_sizes //         RESERVED @ 0x4a51154 : 12
 	         b_sizes //         RESERVED @ 0x4a51186 : 28
 	         i_sizes //         RESERVED @ 0x4a511c8 : 16
-	     f_arrays[i] //         RESERVED @ 0x4a511fe : 144
-	     f_arrays[i] //         RESERVED @ 0x4a512b4 : 40
-	     f_arrays[i] //         RESERVED @ 0x4a51302 : 28
-	     b_arrays[i] //         RESERVED @ 0x4a51344 : 18
-	     b_arrays[i] //         RESERVED @ 0x4a5137c : 38
-	     b_arrays[i] //         RESERVED @ 0x4a513c8 : 18
-	     b_arrays[i] //         RESERVED @ 0x4a51400 : 26
-	     b_arrays[i] //         RESERVED @ 0x4a51440 : 42
-	     b_arrays[i] //         RESERVED @ 0x4a51490 : 4
-	     b_arrays[i] //         RESERVED @ 0x4a514ba : 36
-	     i_arrays[i] //         RESERVED @ 0x4a51504 : 100
-	     i_arrays[i] //         RESERVED @ 0x4a5158e : 128
-	     i_arrays[i] //         RESERVED @ 0x4a51634 : 184
-	       HEAP_FREE //      UNALLOCATED @ 0x4a51712 : 2072
+	     f_arrays[i] //         RESERVED @ 0x4a511fe : 124
+	     f_arrays[i] //         RESERVED @ 0x4a512a0 : 88
+	     f_arrays[i] //         RESERVED @ 0x4a5131e : 160
+	     b_arrays[i] //         RESERVED @ 0x4a513e4 : 9
+	     b_arrays[i] //         RESERVED @ 0x4a51413 : 1
+	     b_arrays[i] //         RESERVED @ 0x4a5143a : 47
+	     b_arrays[i] //         RESERVED @ 0x4a5148f : 7
+	     b_arrays[i] //         RESERVED @ 0x4a514bc : 30
+	     b_arrays[i] //         RESERVED @ 0x4a51500 : 16
+	     b_arrays[i] //         RESERVED @ 0x4a51536 : 21
+	     i_arrays[i] //         RESERVED @ 0x4a51571 : 44
+	     i_arrays[i] //         RESERVED @ 0x4a515c3 : 88
+	     i_arrays[i] //         RESERVED @ 0x4a51641 : 144
+	       HEAP_FREE //      UNALLOCATED @ 0x4a516f7 : 2099
 --------------------------------------------------------------------------------
 
 
 ALLOC
 --------------------------------------------------------------------------------
-Heap:           GLOBAL
+Heap:           global
 
 Region:        KHEAP //        0x4a4f000 : 4096 : 315 : 5
 
@@ -601,7 +601,7 @@ Region:        KHEAP //        0x4a4f000 : 4096 : 315 : 5
 	         REG_ARR //         RESERVED @ 0x4a4f0b7 : 16
 	      KHEAP_FREE //      UNALLOCATED @ 0x4a4f0ed : 3781
 
-Region:       HEAP_1 //        0x4a51000 : 4096 : 2270 : 23
+Region:       HEAP_1 //        0x4a51000 : 4096 : 2139 : 23
 
 	       CHUNK_ARR //         RESERVED @ 0x4a51f48 : 184
 	         REG_PTR //         RESERVED @ 0x4a51026 : 38
@@ -611,27 +611,27 @@ Region:       HEAP_1 //        0x4a51000 : 4096 : 2270 : 23
 	         f_sizes //         RESERVED @ 0x4a51154 : 12
 	         b_sizes //         RESERVED @ 0x4a51186 : 28
 	         i_sizes //         RESERVED @ 0x4a511c8 : 16
-	     f_arrays[i] //         RESERVED @ 0x4a511fe : 144
-	     f_arrays[i] //         RESERVED @ 0x4a512b4 : 40
-	     f_arrays[i] //         RESERVED @ 0x4a51302 : 28
-	     b_arrays[i] //         RESERVED @ 0x4a51344 : 18
-	     b_arrays[i] //         RESERVED @ 0x4a5137c : 38
-	     b_arrays[i] //         RESERVED @ 0x4a513c8 : 18
-	     b_arrays[i] //         RESERVED @ 0x4a51400 : 26
-	     b_arrays[i] //         RESERVED @ 0x4a51440 : 42
-	     b_arrays[i] //         RESERVED @ 0x4a51490 : 4
-	     b_arrays[i] //         RESERVED @ 0x4a514ba : 36
-	     i_arrays[i] //         RESERVED @ 0x4a51504 : 100
-	     i_arrays[i] //         RESERVED @ 0x4a5158e : 128
-	     i_arrays[i] //         RESERVED @ 0x4a51634 : 184
-	     i_arrays[i] //         RESERVED @ 0x4a51712 : 200
-	       HEAP_FREE //      UNALLOCATED @ 0x4a51800 : 1826
+	     f_arrays[i] //         RESERVED @ 0x4a511fe : 124
+	     f_arrays[i] //         RESERVED @ 0x4a512a0 : 88
+	     f_arrays[i] //         RESERVED @ 0x4a5131e : 160
+	     b_arrays[i] //         RESERVED @ 0x4a513e4 : 9
+	     b_arrays[i] //         RESERVED @ 0x4a51413 : 1
+	     b_arrays[i] //         RESERVED @ 0x4a5143a : 47
+	     b_arrays[i] //         RESERVED @ 0x4a5148f : 7
+	     b_arrays[i] //         RESERVED @ 0x4a514bc : 30
+	     b_arrays[i] //         RESERVED @ 0x4a51500 : 16
+	     b_arrays[i] //         RESERVED @ 0x4a51536 : 21
+	     i_arrays[i] //         RESERVED @ 0x4a51571 : 44
+	     i_arrays[i] //         RESERVED @ 0x4a515c3 : 88
+	     i_arrays[i] //         RESERVED @ 0x4a51641 : 144
+	     i_arrays[i] //         RESERVED @ 0x4a516f7 : 96
+	       HEAP_FREE //      UNALLOCATED @ 0x4a5177d : 1957
 --------------------------------------------------------------------------------
 
 
 CULL
 --------------------------------------------------------------------------------
-Heap:           GLOBAL
+Heap:           global
 
 Region:        KHEAP //        0x4a4f000 : 4096 : 315 : 5
 
@@ -641,7 +641,7 @@ Region:        KHEAP //        0x4a4f000 : 4096 : 315 : 5
 	         REG_ARR //         RESERVED @ 0x4a4f0b7 : 16
 	      KHEAP_FREE //      UNALLOCATED @ 0x4a4f0ed : 3781
 
-Region:       HEAP_1 //        0x4a51000 : 4096 : 2080 : 23
+Region:       HEAP_1 //        0x4a51000 : 4096 : 1969 : 23
 
 	       CHUNK_ARR //         RESERVED @ 0x4a51f48 : 184
 	         REG_PTR //         RESERVED @ 0x4a51026 : 38
@@ -651,27 +651,27 @@ Region:       HEAP_1 //        0x4a51000 : 4096 : 2080 : 23
 	         f_sizes //         RESERVED @ 0x4a51154 : 12
 	         b_sizes //         RESERVED @ 0x4a51186 : 28
 	         i_sizes //         RESERVED @ 0x4a511c8 : 16
-	     f_arrays[i] //           CULLED @ 0x4a511fe : 144
-	     f_arrays[i] //         RESERVED @ 0x4a512b4 : 40
-	     f_arrays[i] //         RESERVED @ 0x4a51302 : 28
-	     b_arrays[i] //         RESERVED @ 0x4a51344 : 18
-	     b_arrays[i] //         RESERVED @ 0x4a5137c : 38
-	     b_arrays[i] //         RESERVED @ 0x4a513c8 : 18
-	     b_arrays[i] //         RESERVED @ 0x4a51400 : 26
-	     b_arrays[i] //         RESERVED @ 0x4a51440 : 42
-	     b_arrays[i] //         RESERVED @ 0x4a51490 : 4
-	     b_arrays[i] //         RESERVED @ 0x4a514ba : 36
-	     i_arrays[i] //         RESERVED @ 0x4a51504 : 100
-	     i_arrays[i] //         RESERVED @ 0x4a5158e : 128
-	     i_arrays[i] //         RESERVED @ 0x4a51634 : 184
-	     i_arrays[i] //         RESERVED @ 0x4a51712 : 200
-	       HEAP_FREE //      UNALLOCATED @ 0x4a51800 : 1826
+	     f_arrays[i] //           CULLED @ 0x4a511fe : 124
+	     f_arrays[i] //         RESERVED @ 0x4a512a0 : 88
+	     f_arrays[i] //         RESERVED @ 0x4a5131e : 160
+	     b_arrays[i] //         RESERVED @ 0x4a513e4 : 9
+	     b_arrays[i] //         RESERVED @ 0x4a51413 : 1
+	     b_arrays[i] //         RESERVED @ 0x4a5143a : 47
+	     b_arrays[i] //         RESERVED @ 0x4a5148f : 7
+	     b_arrays[i] //         RESERVED @ 0x4a514bc : 30
+	     b_arrays[i] //         RESERVED @ 0x4a51500 : 16
+	     b_arrays[i] //         RESERVED @ 0x4a51536 : 21
+	     i_arrays[i] //         RESERVED @ 0x4a51571 : 44
+	     i_arrays[i] //         RESERVED @ 0x4a515c3 : 88
+	     i_arrays[i] //         RESERVED @ 0x4a51641 : 144
+	     i_arrays[i] //         RESERVED @ 0x4a516f7 : 96
+	       HEAP_FREE //      UNALLOCATED @ 0x4a5177d : 1957
 --------------------------------------------------------------------------------
 
 
 CULL
 --------------------------------------------------------------------------------
-Heap:           GLOBAL
+Heap:           global
 
 Region:        KHEAP //        0x4a4f000 : 4096 : 315 : 5
 
@@ -681,7 +681,7 @@ Region:        KHEAP //        0x4a4f000 : 4096 : 315 : 5
 	         REG_ARR //         RESERVED @ 0x4a4f0b7 : 16
 	      KHEAP_FREE //      UNALLOCATED @ 0x4a4f0ed : 3781
 
-Region:       HEAP_1 //        0x4a51000 : 4096 : 1994 : 22
+Region:       HEAP_1 //        0x4a51000 : 4096 : 1835 : 22
 
 	       CHUNK_ARR //         RESERVED @ 0x4a51f50 : 176
 	         REG_PTR //         RESERVED @ 0x4a51026 : 38
@@ -691,26 +691,26 @@ Region:       HEAP_1 //        0x4a51000 : 4096 : 1994 : 22
 	         f_sizes //         RESERVED @ 0x4a51154 : 12
 	         b_sizes //         RESERVED @ 0x4a51186 : 28
 	         i_sizes //         RESERVED @ 0x4a511c8 : 16
-	       HEAP_FREE //      UNALLOCATED @ 0x4a511fe : 222
-	     f_arrays[i] //         RESERVED @ 0x4a51302 : 28
-	     b_arrays[i] //         RESERVED @ 0x4a51344 : 18
-	     b_arrays[i] //         RESERVED @ 0x4a5137c : 38
-	     b_arrays[i] //         RESERVED @ 0x4a513c8 : 18
-	     b_arrays[i] //         RESERVED @ 0x4a51400 : 26
-	     b_arrays[i] //         RESERVED @ 0x4a51440 : 42
-	     b_arrays[i] //         RESERVED @ 0x4a51490 : 4
-	     b_arrays[i] //         RESERVED @ 0x4a514ba : 36
-	     i_arrays[i] //         RESERVED @ 0x4a51504 : 100
-	     i_arrays[i] //         RESERVED @ 0x4a5158e : 128
-	     i_arrays[i] //         RESERVED @ 0x4a51634 : 184
-	     i_arrays[i] //         RESERVED @ 0x4a51712 : 200
-	       HEAP_FREE //      UNALLOCATED @ 0x4a51800 : 1834
+	       HEAP_FREE //      UNALLOCATED @ 0x4a511fe : 250
+	     f_arrays[i] //         RESERVED @ 0x4a5131e : 160
+	     b_arrays[i] //         RESERVED @ 0x4a513e4 : 9
+	     b_arrays[i] //         RESERVED @ 0x4a51413 : 1
+	     b_arrays[i] //         RESERVED @ 0x4a5143a : 47
+	     b_arrays[i] //         RESERVED @ 0x4a5148f : 7
+	     b_arrays[i] //         RESERVED @ 0x4a514bc : 30
+	     b_arrays[i] //         RESERVED @ 0x4a51500 : 16
+	     b_arrays[i] //         RESERVED @ 0x4a51536 : 21
+	     i_arrays[i] //         RESERVED @ 0x4a51571 : 44
+	     i_arrays[i] //         RESERVED @ 0x4a515c3 : 88
+	     i_arrays[i] //         RESERVED @ 0x4a51641 : 144
+	     i_arrays[i] //         RESERVED @ 0x4a516f7 : 96
+	       HEAP_FREE //      UNALLOCATED @ 0x4a5177d : 1965
 --------------------------------------------------------------------------------
 
 
 CULL
 --------------------------------------------------------------------------------
-Heap:           GLOBAL
+Heap:           global
 
 Region:        KHEAP //        0x4a4f000 : 4096 : 315 : 5
 
@@ -720,7 +720,7 @@ Region:        KHEAP //        0x4a4f000 : 4096 : 315 : 5
 	         REG_ARR //         RESERVED @ 0x4a4f0b7 : 16
 	      KHEAP_FREE //      UNALLOCATED @ 0x4a4f0ed : 3781
 
-Region:       HEAP_1 //        0x4a51000 : 4096 : 1920 : 21
+Region:       HEAP_1 //        0x4a51000 : 4096 : 1629 : 21
 
 	       CHUNK_ARR //         RESERVED @ 0x4a51f58 : 168
 	         REG_PTR //         RESERVED @ 0x4a51026 : 38
@@ -730,25 +730,25 @@ Region:       HEAP_1 //        0x4a51000 : 4096 : 1920 : 21
 	         f_sizes //         RESERVED @ 0x4a51154 : 12
 	         b_sizes //         RESERVED @ 0x4a51186 : 28
 	         i_sizes //         RESERVED @ 0x4a511c8 : 16
-	       HEAP_FREE //      UNALLOCATED @ 0x4a511fe : 288
-	     b_arrays[i] //         RESERVED @ 0x4a51344 : 18
-	     b_arrays[i] //         RESERVED @ 0x4a5137c : 38
-	     b_arrays[i] //         RESERVED @ 0x4a513c8 : 18
-	     b_arrays[i] //         RESERVED @ 0x4a51400 : 26
-	     b_arrays[i] //         RESERVED @ 0x4a51440 : 42
-	     b_arrays[i] //         RESERVED @ 0x4a51490 : 4
-	     b_arrays[i] //         RESERVED @ 0x4a514ba : 36
-	     i_arrays[i] //         RESERVED @ 0x4a51504 : 100
-	     i_arrays[i] //         RESERVED @ 0x4a5158e : 128
-	     i_arrays[i] //         RESERVED @ 0x4a51634 : 184
-	     i_arrays[i] //         RESERVED @ 0x4a51712 : 200
-	       HEAP_FREE //      UNALLOCATED @ 0x4a51800 : 1842
+	       HEAP_FREE //      UNALLOCATED @ 0x4a511fe : 448
+	     b_arrays[i] //         RESERVED @ 0x4a513e4 : 9
+	     b_arrays[i] //         RESERVED @ 0x4a51413 : 1
+	     b_arrays[i] //         RESERVED @ 0x4a5143a : 47
+	     b_arrays[i] //         RESERVED @ 0x4a5148f : 7
+	     b_arrays[i] //         RESERVED @ 0x4a514bc : 30
+	     b_arrays[i] //         RESERVED @ 0x4a51500 : 16
+	     b_arrays[i] //         RESERVED @ 0x4a51536 : 21
+	     i_arrays[i] //         RESERVED @ 0x4a51571 : 44
+	     i_arrays[i] //         RESERVED @ 0x4a515c3 : 88
+	     i_arrays[i] //         RESERVED @ 0x4a51641 : 144
+	     i_arrays[i] //         RESERVED @ 0x4a516f7 : 96
+	       HEAP_FREE //      UNALLOCATED @ 0x4a5177d : 1973
 --------------------------------------------------------------------------------
 
 
 CULL
 --------------------------------------------------------------------------------
-Heap:           GLOBAL
+Heap:           global
 
 Region:        KHEAP //        0x4a4f000 : 4096 : 315 : 5
 
@@ -758,7 +758,7 @@ Region:        KHEAP //        0x4a4f000 : 4096 : 315 : 5
 	         REG_ARR //         RESERVED @ 0x4a4f0b7 : 16
 	      KHEAP_FREE //      UNALLOCATED @ 0x4a4f0ed : 3781
 
-Region:       HEAP_1 //        0x4a51000 : 4096 : 1856 : 20
+Region:       HEAP_1 //        0x4a51000 : 4096 : 1574 : 20
 
 	       CHUNK_ARR //         RESERVED @ 0x4a51f60 : 160
 	         REG_PTR //         RESERVED @ 0x4a51026 : 38
@@ -768,24 +768,24 @@ Region:       HEAP_1 //        0x4a51000 : 4096 : 1856 : 20
 	         f_sizes //         RESERVED @ 0x4a51154 : 12
 	         b_sizes //         RESERVED @ 0x4a51186 : 28
 	         i_sizes //         RESERVED @ 0x4a511c8 : 16
-	       HEAP_FREE //      UNALLOCATED @ 0x4a511fe : 344
-	     b_arrays[i] //         RESERVED @ 0x4a5137c : 38
-	     b_arrays[i] //         RESERVED @ 0x4a513c8 : 18
-	     b_arrays[i] //         RESERVED @ 0x4a51400 : 26
-	     b_arrays[i] //         RESERVED @ 0x4a51440 : 42
-	     b_arrays[i] //         RESERVED @ 0x4a51490 : 4
-	     b_arrays[i] //         RESERVED @ 0x4a514ba : 36
-	     i_arrays[i] //         RESERVED @ 0x4a51504 : 100
-	     i_arrays[i] //         RESERVED @ 0x4a5158e : 128
-	     i_arrays[i] //         RESERVED @ 0x4a51634 : 184
-	     i_arrays[i] //         RESERVED @ 0x4a51712 : 200
-	       HEAP_FREE //      UNALLOCATED @ 0x4a51800 : 1850
+	       HEAP_FREE //      UNALLOCATED @ 0x4a511fe : 495
+	     b_arrays[i] //         RESERVED @ 0x4a51413 : 1
+	     b_arrays[i] //         RESERVED @ 0x4a5143a : 47
+	     b_arrays[i] //         RESERVED @ 0x4a5148f : 7
+	     b_arrays[i] //         RESERVED @ 0x4a514bc : 30
+	     b_arrays[i] //         RESERVED @ 0x4a51500 : 16
+	     b_arrays[i] //         RESERVED @ 0x4a51536 : 21
+	     i_arrays[i] //         RESERVED @ 0x4a51571 : 44
+	     i_arrays[i] //         RESERVED @ 0x4a515c3 : 88
+	     i_arrays[i] //         RESERVED @ 0x4a51641 : 144
+	     i_arrays[i] //         RESERVED @ 0x4a516f7 : 96
+	       HEAP_FREE //      UNALLOCATED @ 0x4a5177d : 1981
 --------------------------------------------------------------------------------
 
 
 CULL
 --------------------------------------------------------------------------------
-Heap:           GLOBAL
+Heap:           global
 
 Region:        KHEAP //        0x4a4f000 : 4096 : 315 : 5
 
@@ -795,7 +795,7 @@ Region:        KHEAP //        0x4a4f000 : 4096 : 315 : 5
 	         REG_ARR //         RESERVED @ 0x4a4f0b7 : 16
 	      KHEAP_FREE //      UNALLOCATED @ 0x4a4f0ed : 3781
 
-Region:       HEAP_1 //        0x4a51000 : 4096 : 1772 : 19
+Region:       HEAP_1 //        0x4a51000 : 4096 : 1527 : 19
 
 	       CHUNK_ARR //         RESERVED @ 0x4a51f68 : 152
 	         REG_PTR //         RESERVED @ 0x4a51026 : 38
@@ -805,23 +805,23 @@ Region:       HEAP_1 //        0x4a51000 : 4096 : 1772 : 19
 	         f_sizes //         RESERVED @ 0x4a51154 : 12
 	         b_sizes //         RESERVED @ 0x4a51186 : 28
 	         i_sizes //         RESERVED @ 0x4a511c8 : 16
-	       HEAP_FREE //      UNALLOCATED @ 0x4a511fe : 420
-	     b_arrays[i] //         RESERVED @ 0x4a513c8 : 18
-	     b_arrays[i] //         RESERVED @ 0x4a51400 : 26
-	     b_arrays[i] //         RESERVED @ 0x4a51440 : 42
-	     b_arrays[i] //         RESERVED @ 0x4a51490 : 4
-	     b_arrays[i] //         RESERVED @ 0x4a514ba : 36
-	     i_arrays[i] //         RESERVED @ 0x4a51504 : 100
-	     i_arrays[i] //         RESERVED @ 0x4a5158e : 128
-	     i_arrays[i] //         RESERVED @ 0x4a51634 : 184
-	     i_arrays[i] //         RESERVED @ 0x4a51712 : 200
-	       HEAP_FREE //      UNALLOCATED @ 0x4a51800 : 1858
+	       HEAP_FREE //      UNALLOCATED @ 0x4a511fe : 534
+	     b_arrays[i] //         RESERVED @ 0x4a5143a : 47
+	     b_arrays[i] //         RESERVED @ 0x4a5148f : 7
+	     b_arrays[i] //         RESERVED @ 0x4a514bc : 30
+	     b_arrays[i] //         RESERVED @ 0x4a51500 : 16
+	     b_arrays[i] //         RESERVED @ 0x4a51536 : 21
+	     i_arrays[i] //         RESERVED @ 0x4a51571 : 44
+	     i_arrays[i] //         RESERVED @ 0x4a515c3 : 88
+	     i_arrays[i] //         RESERVED @ 0x4a51641 : 144
+	     i_arrays[i] //         RESERVED @ 0x4a516f7 : 96
+	       HEAP_FREE //      UNALLOCATED @ 0x4a5177d : 1989
 --------------------------------------------------------------------------------
 
 
 CULL
 --------------------------------------------------------------------------------
-Heap:           GLOBAL
+Heap:           global
 
 Region:        KHEAP //        0x4a4f000 : 4096 : 315 : 5
 
@@ -831,7 +831,7 @@ Region:        KHEAP //        0x4a4f000 : 4096 : 315 : 5
 	         REG_ARR //         RESERVED @ 0x4a4f0b7 : 16
 	      KHEAP_FREE //      UNALLOCATED @ 0x4a4f0ed : 3781
 
-Region:       HEAP_1 //        0x4a51000 : 4096 : 1708 : 18
+Region:       HEAP_1 //        0x4a51000 : 4096 : 1434 : 18
 
 	       CHUNK_ARR //         RESERVED @ 0x4a51f70 : 144
 	         REG_PTR //         RESERVED @ 0x4a51026 : 38
@@ -841,22 +841,22 @@ Region:       HEAP_1 //        0x4a51000 : 4096 : 1708 : 18
 	         f_sizes //         RESERVED @ 0x4a51154 : 12
 	         b_sizes //         RESERVED @ 0x4a51186 : 28
 	         i_sizes //         RESERVED @ 0x4a511c8 : 16
-	       HEAP_FREE //      UNALLOCATED @ 0x4a511fe : 476
-	     b_arrays[i] //         RESERVED @ 0x4a51400 : 26
-	     b_arrays[i] //         RESERVED @ 0x4a51440 : 42
-	     b_arrays[i] //         RESERVED @ 0x4a51490 : 4
-	     b_arrays[i] //         RESERVED @ 0x4a514ba : 36
-	     i_arrays[i] //         RESERVED @ 0x4a51504 : 100
-	     i_arrays[i] //         RESERVED @ 0x4a5158e : 128
-	     i_arrays[i] //         RESERVED @ 0x4a51634 : 184
-	     i_arrays[i] //         RESERVED @ 0x4a51712 : 200
-	       HEAP_FREE //      UNALLOCATED @ 0x4a51800 : 1866
+	       HEAP_FREE //      UNALLOCATED @ 0x4a511fe : 619
+	     b_arrays[i] //         RESERVED @ 0x4a5148f : 7
+	     b_arrays[i] //         RESERVED @ 0x4a514bc : 30
+	     b_arrays[i] //         RESERVED @ 0x4a51500 : 16
+	     b_arrays[i] //         RESERVED @ 0x4a51536 : 21
+	     i_arrays[i] //         RESERVED @ 0x4a51571 : 44
+	     i_arrays[i] //         RESERVED @ 0x4a515c3 : 88
+	     i_arrays[i] //         RESERVED @ 0x4a51641 : 144
+	     i_arrays[i] //         RESERVED @ 0x4a516f7 : 96
+	       HEAP_FREE //      UNALLOCATED @ 0x4a5177d : 1997
 --------------------------------------------------------------------------------
 
 
 CULL
 --------------------------------------------------------------------------------
-Heap:           GLOBAL
+Heap:           global
 
 Region:        KHEAP //        0x4a4f000 : 4096 : 315 : 5
 
@@ -866,7 +866,7 @@ Region:        KHEAP //        0x4a4f000 : 4096 : 315 : 5
 	         REG_ARR //         RESERVED @ 0x4a4f0b7 : 16
 	      KHEAP_FREE //      UNALLOCATED @ 0x4a4f0ed : 3781
 
-Region:       HEAP_1 //        0x4a51000 : 4096 : 1636 : 17
+Region:       HEAP_1 //        0x4a51000 : 4096 : 1381 : 17
 
 	       CHUNK_ARR //         RESERVED @ 0x4a51f78 : 136
 	         REG_PTR //         RESERVED @ 0x4a51026 : 38
@@ -876,21 +876,21 @@ Region:       HEAP_1 //        0x4a51000 : 4096 : 1636 : 17
 	         f_sizes //         RESERVED @ 0x4a51154 : 12
 	         b_sizes //         RESERVED @ 0x4a51186 : 28
 	         i_sizes //         RESERVED @ 0x4a511c8 : 16
-	       HEAP_FREE //      UNALLOCATED @ 0x4a511fe : 540
-	     b_arrays[i] //         RESERVED @ 0x4a51440 : 42
-	     b_arrays[i] //         RESERVED @ 0x4a51490 : 4
-	     b_arrays[i] //         RESERVED @ 0x4a514ba : 36
-	     i_arrays[i] //         RESERVED @ 0x4a51504 : 100
-	     i_arrays[i] //         RESERVED @ 0x4a5158e : 128
-	     i_arrays[i] //         RESERVED @ 0x4a51634 : 184
-	     i_arrays[i] //         RESERVED @ 0x4a51712 : 200
-	       HEAP_FREE //      UNALLOCATED @ 0x4a51800 : 1874
+	       HEAP_FREE //      UNALLOCATED @ 0x4a511fe : 664
+	     b_arrays[i] //         RESERVED @ 0x4a514bc : 30
+	     b_arrays[i] //         RESERVED @ 0x4a51500 : 16
+	     b_arrays[i] //         RESERVED @ 0x4a51536 : 21
+	     i_arrays[i] //         RESERVED @ 0x4a51571 : 44
+	     i_arrays[i] //         RESERVED @ 0x4a515c3 : 88
+	     i_arrays[i] //         RESERVED @ 0x4a51641 : 144
+	     i_arrays[i] //         RESERVED @ 0x4a516f7 : 96
+	       HEAP_FREE //      UNALLOCATED @ 0x4a5177d : 2005
 --------------------------------------------------------------------------------
 
 
 CULL
 --------------------------------------------------------------------------------
-Heap:           GLOBAL
+Heap:           global
 
 Region:        KHEAP //        0x4a4f000 : 4096 : 315 : 5
 
@@ -900,7 +900,7 @@ Region:        KHEAP //        0x4a4f000 : 4096 : 315 : 5
 	         REG_ARR //         RESERVED @ 0x4a4f0b7 : 16
 	      KHEAP_FREE //      UNALLOCATED @ 0x4a4f0ed : 3781
 
-Region:       HEAP_1 //        0x4a51000 : 4096 : 1548 : 16
+Region:       HEAP_1 //        0x4a51000 : 4096 : 1305 : 16
 
 	       CHUNK_ARR //         RESERVED @ 0x4a51f80 : 128
 	         REG_PTR //         RESERVED @ 0x4a51026 : 38
@@ -910,20 +910,20 @@ Region:       HEAP_1 //        0x4a51000 : 4096 : 1548 : 16
 	         f_sizes //         RESERVED @ 0x4a51154 : 12
 	         b_sizes //         RESERVED @ 0x4a51186 : 28
 	         i_sizes //         RESERVED @ 0x4a511c8 : 16
-	       HEAP_FREE //      UNALLOCATED @ 0x4a511fe : 620
-	     b_arrays[i] //         RESERVED @ 0x4a51490 : 4
-	     b_arrays[i] //         RESERVED @ 0x4a514ba : 36
-	     i_arrays[i] //         RESERVED @ 0x4a51504 : 100
-	     i_arrays[i] //         RESERVED @ 0x4a5158e : 128
-	     i_arrays[i] //         RESERVED @ 0x4a51634 : 184
-	     i_arrays[i] //         RESERVED @ 0x4a51712 : 200
-	       HEAP_FREE //      UNALLOCATED @ 0x4a51800 : 1882
+	       HEAP_FREE //      UNALLOCATED @ 0x4a511fe : 732
+	     b_arrays[i] //         RESERVED @ 0x4a51500 : 16
+	     b_arrays[i] //         RESERVED @ 0x4a51536 : 21
+	     i_arrays[i] //         RESERVED @ 0x4a51571 : 44
+	     i_arrays[i] //         RESERVED @ 0x4a515c3 : 88
+	     i_arrays[i] //         RESERVED @ 0x4a51641 : 144
+	     i_arrays[i] //         RESERVED @ 0x4a516f7 : 96
+	       HEAP_FREE //      UNALLOCATED @ 0x4a5177d : 2013
 --------------------------------------------------------------------------------
 
 
 CULL
 --------------------------------------------------------------------------------
-Heap:           GLOBAL
+Heap:           global
 
 Region:        KHEAP //        0x4a4f000 : 4096 : 315 : 5
 
@@ -933,7 +933,7 @@ Region:        KHEAP //        0x4a4f000 : 4096 : 315 : 5
 	         REG_ARR //         RESERVED @ 0x4a4f0b7 : 16
 	      KHEAP_FREE //      UNALLOCATED @ 0x4a4f0ed : 3781
 
-Region:       HEAP_1 //        0x4a51000 : 4096 : 1498 : 15
+Region:       HEAP_1 //        0x4a51000 : 4096 : 1243 : 15
 
 	       CHUNK_ARR //         RESERVED @ 0x4a51f88 : 120
 	         REG_PTR //         RESERVED @ 0x4a51026 : 38
@@ -943,19 +943,19 @@ Region:       HEAP_1 //        0x4a51000 : 4096 : 1498 : 15
 	         f_sizes //         RESERVED @ 0x4a51154 : 12
 	         b_sizes //         RESERVED @ 0x4a51186 : 28
 	         i_sizes //         RESERVED @ 0x4a511c8 : 16
-	       HEAP_FREE //      UNALLOCATED @ 0x4a511fe : 662
-	     b_arrays[i] //         RESERVED @ 0x4a514ba : 36
-	     i_arrays[i] //         RESERVED @ 0x4a51504 : 100
-	     i_arrays[i] //         RESERVED @ 0x4a5158e : 128
-	     i_arrays[i] //         RESERVED @ 0x4a51634 : 184
-	     i_arrays[i] //         RESERVED @ 0x4a51712 : 200
-	       HEAP_FREE //      UNALLOCATED @ 0x4a51800 : 1890
+	       HEAP_FREE //      UNALLOCATED @ 0x4a511fe : 786
+	     b_arrays[i] //         RESERVED @ 0x4a51536 : 21
+	     i_arrays[i] //         RESERVED @ 0x4a51571 : 44
+	     i_arrays[i] //         RESERVED @ 0x4a515c3 : 88
+	     i_arrays[i] //         RESERVED @ 0x4a51641 : 144
+	     i_arrays[i] //         RESERVED @ 0x4a516f7 : 96
+	       HEAP_FREE //      UNALLOCATED @ 0x4a5177d : 2021
 --------------------------------------------------------------------------------
 
 
 CULL
 --------------------------------------------------------------------------------
-Heap:           GLOBAL
+Heap:           global
 
 Region:        KHEAP //        0x4a4f000 : 4096 : 315 : 5
 
@@ -965,7 +965,7 @@ Region:        KHEAP //        0x4a4f000 : 4096 : 315 : 5
 	         REG_ARR //         RESERVED @ 0x4a4f0b7 : 16
 	      KHEAP_FREE //      UNALLOCATED @ 0x4a4f0ed : 3781
 
-Region:       HEAP_1 //        0x4a51000 : 4096 : 1416 : 14
+Region:       HEAP_1 //        0x4a51000 : 4096 : 1176 : 14
 
 	       CHUNK_ARR //         RESERVED @ 0x4a51f90 : 112
 	         REG_PTR //         RESERVED @ 0x4a51026 : 38
@@ -975,18 +975,18 @@ Region:       HEAP_1 //        0x4a51000 : 4096 : 1416 : 14
 	         f_sizes //         RESERVED @ 0x4a51154 : 12
 	         b_sizes //         RESERVED @ 0x4a51186 : 28
 	         i_sizes //         RESERVED @ 0x4a511c8 : 16
-	       HEAP_FREE //      UNALLOCATED @ 0x4a511fe : 736
-	     i_arrays[i] //         RESERVED @ 0x4a51504 : 100
-	     i_arrays[i] //         RESERVED @ 0x4a5158e : 128
-	     i_arrays[i] //         RESERVED @ 0x4a51634 : 184
-	     i_arrays[i] //         RESERVED @ 0x4a51712 : 200
-	       HEAP_FREE //      UNALLOCATED @ 0x4a51800 : 1898
+	       HEAP_FREE //      UNALLOCATED @ 0x4a511fe : 845
+	     i_arrays[i] //         RESERVED @ 0x4a51571 : 44
+	     i_arrays[i] //         RESERVED @ 0x4a515c3 : 88
+	     i_arrays[i] //         RESERVED @ 0x4a51641 : 144
+	     i_arrays[i] //         RESERVED @ 0x4a516f7 : 96
+	       HEAP_FREE //      UNALLOCATED @ 0x4a5177d : 2029
 --------------------------------------------------------------------------------
 
 
 CULL
 --------------------------------------------------------------------------------
-Heap:           GLOBAL
+Heap:           global
 
 Region:        KHEAP //        0x4a4f000 : 4096 : 315 : 5
 
@@ -996,7 +996,7 @@ Region:        KHEAP //        0x4a4f000 : 4096 : 315 : 5
 	         REG_ARR //         RESERVED @ 0x4a4f0b7 : 16
 	      KHEAP_FREE //      UNALLOCATED @ 0x4a4f0ed : 3781
 
-Region:       HEAP_1 //        0x4a51000 : 4096 : 1270 : 13
+Region:       HEAP_1 //        0x4a51000 : 4096 : 1086 : 13
 
 	       CHUNK_ARR //         RESERVED @ 0x4a51f98 : 104
 	         REG_PTR //         RESERVED @ 0x4a51026 : 38
@@ -1006,17 +1006,17 @@ Region:       HEAP_1 //        0x4a51000 : 4096 : 1270 : 13
 	         f_sizes //         RESERVED @ 0x4a51154 : 12
 	         b_sizes //         RESERVED @ 0x4a51186 : 28
 	         i_sizes //         RESERVED @ 0x4a511c8 : 16
-	       HEAP_FREE //      UNALLOCATED @ 0x4a511fe : 874
-	     i_arrays[i] //         RESERVED @ 0x4a5158e : 128
-	     i_arrays[i] //         RESERVED @ 0x4a51634 : 184
-	     i_arrays[i] //         RESERVED @ 0x4a51712 : 200
-	       HEAP_FREE //      UNALLOCATED @ 0x4a51800 : 1906
+	       HEAP_FREE //      UNALLOCATED @ 0x4a511fe : 927
+	     i_arrays[i] //         RESERVED @ 0x4a515c3 : 88
+	     i_arrays[i] //         RESERVED @ 0x4a51641 : 144
+	     i_arrays[i] //         RESERVED @ 0x4a516f7 : 96
+	       HEAP_FREE //      UNALLOCATED @ 0x4a5177d : 2037
 --------------------------------------------------------------------------------
 
 
 CULL
 --------------------------------------------------------------------------------
-Heap:           GLOBAL
+Heap:           global
 
 Region:        KHEAP //        0x4a4f000 : 4096 : 315 : 5
 
@@ -1026,7 +1026,7 @@ Region:        KHEAP //        0x4a4f000 : 4096 : 315 : 5
 	         REG_ARR //         RESERVED @ 0x4a4f0b7 : 16
 	      KHEAP_FREE //      UNALLOCATED @ 0x4a4f0ed : 3781
 
-Region:       HEAP_1 //        0x4a51000 : 4096 : 1096 : 12
+Region:       HEAP_1 //        0x4a51000 : 4096 : 952 : 12
 
 	       CHUNK_ARR //         RESERVED @ 0x4a51fa0 : 96
 	         REG_PTR //         RESERVED @ 0x4a51026 : 38
@@ -1036,16 +1036,16 @@ Region:       HEAP_1 //        0x4a51000 : 4096 : 1096 : 12
 	         f_sizes //         RESERVED @ 0x4a51154 : 12
 	         b_sizes //         RESERVED @ 0x4a51186 : 28
 	         i_sizes //         RESERVED @ 0x4a511c8 : 16
-	       HEAP_FREE //      UNALLOCATED @ 0x4a511fe : 1040
-	     i_arrays[i] //         RESERVED @ 0x4a51634 : 184
-	     i_arrays[i] //         RESERVED @ 0x4a51712 : 200
-	       HEAP_FREE //      UNALLOCATED @ 0x4a51800 : 1914
+	       HEAP_FREE //      UNALLOCATED @ 0x4a511fe : 1053
+	     i_arrays[i] //         RESERVED @ 0x4a51641 : 144
+	     i_arrays[i] //         RESERVED @ 0x4a516f7 : 96
+	       HEAP_FREE //      UNALLOCATED @ 0x4a5177d : 2045
 --------------------------------------------------------------------------------
 
 
 CULL
 --------------------------------------------------------------------------------
-Heap:           GLOBAL
+Heap:           global
 
 Region:        KHEAP //        0x4a4f000 : 4096 : 315 : 5
 
@@ -1055,7 +1055,7 @@ Region:        KHEAP //        0x4a4f000 : 4096 : 315 : 5
 	         REG_ARR //         RESERVED @ 0x4a4f0b7 : 16
 	      KHEAP_FREE //      UNALLOCATED @ 0x4a4f0ed : 3781
 
-Region:       HEAP_1 //        0x4a51000 : 4096 : 866 : 11
+Region:       HEAP_1 //        0x4a51000 : 4096 : 762 : 11
 
 	       CHUNK_ARR //         RESERVED @ 0x4a51fa8 : 88
 	         REG_PTR //         RESERVED @ 0x4a51026 : 38
@@ -1065,15 +1065,15 @@ Region:       HEAP_1 //        0x4a51000 : 4096 : 866 : 11
 	         f_sizes //         RESERVED @ 0x4a51154 : 12
 	         b_sizes //         RESERVED @ 0x4a51186 : 28
 	         i_sizes //         RESERVED @ 0x4a511c8 : 16
-	       HEAP_FREE //      UNALLOCATED @ 0x4a511fe : 1262
-	     i_arrays[i] //         RESERVED @ 0x4a51712 : 200
-	       HEAP_FREE //      UNALLOCATED @ 0x4a51800 : 1922
+	       HEAP_FREE //      UNALLOCATED @ 0x4a511fe : 1235
+	     i_arrays[i] //         RESERVED @ 0x4a516f7 : 96
+	       HEAP_FREE //      UNALLOCATED @ 0x4a5177d : 2053
 --------------------------------------------------------------------------------
 
 
 CULL
 --------------------------------------------------------------------------------
-Heap:           GLOBAL
+Heap:           global
 
 Region:        KHEAP //        0x4a4f000 : 4096 : 315 : 5
 
@@ -1093,13 +1093,13 @@ Region:       HEAP_1 //        0x4a51000 : 4096 : 620 : 9
 	         f_sizes //         RESERVED @ 0x4a51154 : 12
 	         b_sizes //         RESERVED @ 0x4a51186 : 28
 	         i_sizes //         RESERVED @ 0x4a511c8 : 16
-	       HEAP_FREE //      UNALLOCATED @ 0x4a51712 : 3476
+	       HEAP_FREE //      UNALLOCATED @ 0x4a516f7 : 3476
 --------------------------------------------------------------------------------
 
 
 CULL
 --------------------------------------------------------------------------------
-Heap:           GLOBAL
+Heap:           global
 
 Region:        KHEAP //        0x4a4f000 : 4096 : 315 : 5
 
@@ -1119,13 +1119,13 @@ Region:       HEAP_1 //        0x4a51000 : 4096 : 562 : 9
 	         f_sizes //           CULLED @ 0x4a51154 : 12
 	         b_sizes //         RESERVED @ 0x4a51186 : 28
 	         i_sizes //         RESERVED @ 0x4a511c8 : 16
-	       HEAP_FREE //      UNALLOCATED @ 0x4a51712 : 3476
+	       HEAP_FREE //      UNALLOCATED @ 0x4a516f7 : 3476
 --------------------------------------------------------------------------------
 
 
 CULL
 --------------------------------------------------------------------------------
-Heap:           GLOBAL
+Heap:           global
 
 Region:        KHEAP //        0x4a4f000 : 4096 : 315 : 5
 
@@ -1144,13 +1144,13 @@ Region:       HEAP_1 //        0x4a51000 : 4096 : 488 : 8
 	        i_arrays //         RESERVED @ 0x4a5110e : 32
 	       HEAP_FREE //      UNALLOCATED @ 0x4a51154 : 78
 	         i_sizes //         RESERVED @ 0x4a511c8 : 16
-	       HEAP_FREE //      UNALLOCATED @ 0x4a51712 : 3484
+	       HEAP_FREE //      UNALLOCATED @ 0x4a516f7 : 3484
 --------------------------------------------------------------------------------
 
 
 CULL
 --------------------------------------------------------------------------------
-Heap:           GLOBAL
+Heap:           global
 
 Region:        KHEAP //        0x4a4f000 : 4096 : 315 : 5
 
@@ -1173,7 +1173,7 @@ Region:       HEAP_1 //        0x4a51000 : 4096 : 426 : 6
 
 CULL
 --------------------------------------------------------------------------------
-Heap:           GLOBAL
+Heap:           global
 
 Region:        KHEAP //        0x4a4f000 : 4096 : 315 : 5
 
@@ -1196,7 +1196,7 @@ Region:       HEAP_1 //        0x4a51000 : 4096 : 356 : 6
 
 CULL
 --------------------------------------------------------------------------------
-Heap:           GLOBAL
+Heap:           global
 
 Region:        KHEAP //        0x4a4f000 : 4096 : 315 : 5
 
@@ -1218,7 +1218,7 @@ Region:       HEAP_1 //        0x4a51000 : 4096 : 254 : 5
 
 CULL
 --------------------------------------------------------------------------------
-Heap:           GLOBAL
+Heap:           global
 
 Region:        KHEAP //        0x4a4f000 : 4096 : 315 : 5
 
