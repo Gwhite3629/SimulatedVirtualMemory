@@ -36,3 +36,9 @@ make creates a build directory containing a shared object file for the library
 and two non-instrumented test programs.
 The test script compiles the two programs with instrumentation and logging 
 enabled.
+
+TODO:
+    * Integrate into operating system with underlying virtual memory system
+    * Turn into a full slab allocator with smart pointer checks and process
+        specific address space
+    * Expand profiling options and make them modular
