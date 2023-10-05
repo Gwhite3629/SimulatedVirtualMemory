@@ -38,7 +38,7 @@ The test script compiles the two programs with instrumentation and logging
 enabled.
 
 TODO:
-    * Integrate into operating system with underlying virtual memory system
-    * Turn into a full slab allocator with smart pointer checks and process
+    1. Integrate into operating system with underlying virtual memory system
+    2. Turn into a full slab allocator with smart pointer checks and process
         specific address space
-    * Expand profiling options and make them modular
+    3. Expand profiling options and make them modular
