@@ -1,0 +1,17 @@
+#!/bin/bash
+
+mkdir testlogs
+make debug
+valgrind --log-file=log --leak-check=full --show-leak-kinds=all --track-origins=yes debug/memdebug 5 4 3 32 64 0
+mv mem_log.txt testlogs/mem_log_1.txt
+mv log testlogs/log_1
+
+valgrind --log-file=log --leak-check=full --show-leak-kinds=all --track-origins=yes debug/memdebug 10 10 10 128 256 0
+mv mem_log.txt testlogs/mem_log_2.txt
+mv log testlogs/log_2
+
+valgrind --log-file=log --leak-check=full --show-leak-kinds=all --track-origins=yes debug/memdebug 3 7 4 1 51 0
+mv mem_log.txt testlogs/mem_log_3.txt
+mv log testlogs/log_3
+
+valgrind --log-file=log --leak-check=full --show-leak-kinds=all --track-origins=yes debug/simpledebug

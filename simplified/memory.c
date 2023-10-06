@@ -22,7 +22,7 @@ FILE *log_file = NULL;
 
 __attribute__ ((constructor)) static inline void init(void)
 {
-	global_heap = create(ALIGN, 1*ALIGN, "global");
+	global_heap = create(ALIGN, 1*ALIGN);
 	VALID(global_heap, MEM_CODE, ALLOCATION_ERROR);
 	return;
 exit:
@@ -35,7 +35,7 @@ __attribute__ ((destructor)) static inline void end(void)
 }
 
 // Create initial heap with kernel region and user region 1
-inline heap_t *create(int alignment, int size, const char *name)
+inline heap_t *create(int alignment, int size)
 {
     heap_t h;
 
@@ -79,28 +79,24 @@ inline heap_t *create(int alignment, int size, const char *name)
     // Smart ptr for kernel region info
     heap_reg_info.size = REGION_INFO_SIZE;
     heap_reg_info.flag = RESERVED;
-    strcpy(heap_reg_info.name, "KREG_PTR");
     heap_reg_info.base = base_kheap;
     heap_reg_info.addr = (char *)base_kheap + CHUNK_INFO_SIZE;
 
     // Smart ptr for heap info
     heap_ptr.size = HEAP_INFO_SIZE;
     heap_ptr.flag = RESERVED;
-    strcpy(heap_ptr.name, "KHEAP_PTR");
     heap_ptr.base = base_kheap;
     heap_ptr.addr = (char *)heap_reg_info.addr +  REGION_INFO_SIZE + CHUNK_INFO_SIZE;
 
     // Smart ptr for region array
     reg_arr.size = 2 * REGION_ARR;
     reg_arr.flag = RESERVED;
-    strcpy(reg_arr.name, "REG_ARR");
     reg_arr.base = base_kheap;
     reg_arr.addr = (char *)heap_ptr.addr + HEAP_INFO_SIZE + CHUNK_INFO_SIZE;
     
     // Smart ptr for chunk array
     heap_chunk_arr.size = 5 * CHUNK_ARR;
     heap_chunk_arr.flag = RESERVED;
-    strcpy(heap_chunk_arr.name, "CHUNK_ARR");
     heap_chunk_arr.base = base_kheap;
     heap_chunk_arr.addr = ((char *)base_kheap + size) - heap_chunk_arr.size;
 
@@ -112,20 +108,17 @@ inline heap_t *create(int alignment, int size, const char *name)
                     +  2 * REGION_ARR
                     +  5 * CHUNK_ARR; 
     kheap.n_chunks = 5;
-    strcpy(kheap.name, "KHEAP");
     kheap.base_addr = base_kheap;
     kheap.chunks = heap_chunk_arr.addr;
 
     // Heap info
     h.alignment = alignment;
     h.n_regions = 2;
-    strcpy(h.name, name);
     h.regions = reg_arr.addr;
 
     // Smart ptr for remaining free space
     heap_free_space.size = (size - kheap.used_size);
     heap_free_space.flag = UNALLOCATED;
-    strcpy(heap_free_space.name, "KHEAP_FREE");
     heap_free_space.base = base_kheap;
     heap_free_space.addr = (char *)reg_arr.addr + 2 * REGION_ARR + CHUNK_INFO_SIZE;
 
@@ -151,14 +144,12 @@ inline heap_t *create(int alignment, int size, const char *name)
     // Smart ptr for user region 1 info
     reg_info.size = REGION_INFO_SIZE;
     reg_info.flag = RESERVED;
-    strcpy(reg_info.name, "REG_PTR");
     reg_info.base = base_reg1;
     reg_info.addr = (char *)base_reg1 + CHUNK_INFO_SIZE;
 
     // Smart ptr for chunk array
     chunk_arr.size = 3 * CHUNK_ARR;
     chunk_arr.flag = RESERVED;
-    strcpy(chunk_arr.name, "CHUNK_ARR");
     chunk_arr.base = base_reg1;
     chunk_arr.addr = ((char *)base_reg1 + size) - chunk_arr.size;
 
@@ -168,14 +159,12 @@ inline heap_t *create(int alignment, int size, const char *name)
                     +  3 * CHUNK_INFO_SIZE
                     +  3 * CHUNK_ARR; 
     reg1.n_chunks = 3;
-    strcpy(reg1.name, "HEAP_1");
     reg1.base_addr = base_reg1;
     reg1.chunks = chunk_arr.addr;
 
     // Smart ptr for remaining free space
     free_space.size = (size - reg1.used_size);
     free_space.flag = UNALLOCATED;
-    strcpy(free_space.name, "HEAP_FREE");
     free_space.base = base_reg1;
     free_space.addr = (char *)reg_info.addr + REGION_INFO_SIZE + CHUNK_INFO_SIZE;
 
@@ -198,16 +187,6 @@ inline heap_t *create(int alignment, int size, const char *name)
 
     // Assign heap info
     memcpy((heap_t *)kheap.chunks[2]->addr, &h, HEAP_INFO_SIZE);
-
-    #if LOGGING
-        log_file = fopen("mem_log.txt", "w+");
-	    VALID(log_file, FILE_CODE, FILE_OPEN);    
-    #endif
-
-    #if LOGGING
-        fprintf(log_file, "\nCREATE\n");
-        log(((heap_t *)kheap.chunks[2]->addr));
-    #endif
 
     return (heap_t *)kheap.chunks[2]->addr;
 
@@ -261,28 +240,24 @@ inline heap_t *grow_kheap(heap_t *h)
     // Smart ptr for kernel region info
     heap_reg_info.size = REGION_INFO_SIZE;
     heap_reg_info.flag = RESERVED;
-    strcpy(heap_reg_info.name, "KREG_PTR");
     heap_reg_info.base = base_kheap;
     heap_reg_info.addr = (char *)base_kheap + CHUNK_INFO_SIZE;
 
     // Smart ptr for heap info
     heap_ptr.size = HEAP_INFO_SIZE;
     heap_ptr.flag = RESERVED;
-    strcpy(heap_ptr.name, "KHEAP_PTR");
     heap_ptr.base = base_kheap;
     heap_ptr.addr = (char *)heap_reg_info.addr +  REGION_INFO_SIZE + CHUNK_INFO_SIZE;
 
     // Smart ptr for region array
     reg_arr.size = h->n_regions * REGION_ARR;
     reg_arr.flag = RESERVED;
-    strcpy(reg_arr.name, "REG_ARR");
     reg_arr.base = base_kheap;
     reg_arr.addr = (char *)heap_ptr.addr + HEAP_INFO_SIZE + CHUNK_INFO_SIZE;
     
     // Smart ptr for chunk array
     heap_chunk_arr.size = 5 * CHUNK_ARR;
     heap_chunk_arr.flag = RESERVED;
-    strcpy(heap_chunk_arr.name, "CHUNK_ARR");
     heap_chunk_arr.base = base_kheap;
     heap_chunk_arr.addr = ((char *)base_kheap + size) - heap_chunk_arr.size;
 
@@ -294,20 +269,17 @@ inline heap_t *grow_kheap(heap_t *h)
                     +  h->n_regions * REGION_ARR
                     +  5 * CHUNK_ARR; 
     kheap.n_chunks = 5;
-    strcpy(kheap.name, "KHEAP");
     kheap.base_addr = base_kheap;
     kheap.chunks = heap_chunk_arr.addr;
 
     // Heap info
     new_h.alignment = alignment;
     new_h.n_regions = h->n_regions;
-    strcpy(new_h.name, "GLOBAL");
     new_h.regions = reg_arr.addr;
 
     // Smart ptr for remaining free space
     heap_free_space.size = (size - kheap.used_size);
     heap_free_space.flag = UNALLOCATED;
-    strcpy(heap_free_space.name, "KHEAP_FREE");
     heap_free_space.base = base_kheap;
     heap_free_space.addr = (char *)reg_arr.addr + h->n_regions * REGION_ARR + CHUNK_INFO_SIZE;
 
@@ -335,11 +307,6 @@ inline heap_t *grow_kheap(heap_t *h)
 
     h = (heap_t *)(kheap.chunks[2]->addr);
 
-    #if LOGGING
-        fprintf(log_file, "\nGROW_KHEAP\n");
-        log(h);
-    #endif
-
     return h;
 
 exit:
@@ -347,7 +314,7 @@ exit:
 }
 
 
-inline void *alloc(heap_t *h, int n, const char *name)
+inline void *alloc(heap_t *h, int n)
 {
     int i = 0;
     void *ptr = NULL;
@@ -373,22 +340,16 @@ inline void *alloc(heap_t *h, int n, const char *name)
             new_free.size = h->regions[i]->chunks[h->regions[i]->n_chunks-1]->size - (n + CHUNK_INFO_SIZE + CHUNK_ARR);
             new_free.base = h->regions[i]->base_addr;
             new_free.flag = UNALLOCATED;
-            strcpy(new_free.name, h->regions[i]->chunks[h->regions[i]->n_chunks-1]->name);
 
             new_chunk.addr = (char *)h->regions[i]->chunks[0]->addr - CHUNK_ARR;
             new_chunk.size = (h->regions[i]->n_chunks + 1) * CHUNK_ARR;
             new_chunk.base = h->regions[i]->base_addr;
             new_chunk.flag = RESERVED;
-            strcpy(new_chunk.name, h->regions[i]->chunks[0]->name);
 
             usr_smart.addr = h->regions[i]->chunks[h->regions[i]->n_chunks-1]->addr;
             usr_smart.size = n;
             usr_smart.base = h->regions[i]->base_addr;
             usr_smart.flag = RESERVED;
-            #pragma GCC diagnostic push
-            #pragma GCC diagnostic ignored "-Wstringop-truncation"
-            strncpy(usr_smart.name, name, 13);
-            #pragma GCC diagnostic pop
 
             memcpy(((char *)new_free.addr - CHUNK_INFO_SIZE), &new_free, CHUNK_INFO_SIZE);
             memcpy(((char *)usr_smart.addr - CHUNK_INFO_SIZE), &usr_smart, CHUNK_INFO_SIZE);
@@ -409,14 +370,9 @@ inline void *alloc(heap_t *h, int n, const char *name)
 
     if (alloced == 0) {
         create_region(h, (((n + NEW_REGION_SIZE) / h->alignment) + 1)*h->alignment);
-        ptr = alloc(h, n, name);
+        ptr = alloc(h, n);
         return ptr;
     }
-
-    #if LOGGING
-        fprintf(log_file, "\nALLOC\n");
-        log(h);
-    #endif
 
     return ptr;
 }
@@ -450,14 +406,12 @@ void create_region(heap_t *h, int size)
     // Smart ptr for user region info
     reg_info.size = REGION_INFO_SIZE;
     reg_info.flag = RESERVED;
-    strcpy(reg_info.name, "REG_PTR");
     reg_info.base = base_reg1;
     reg_info.addr = (char *)base_reg1 + CHUNK_INFO_SIZE;
 
     // Smart ptr for chunk array
     chunk_arr.size = 3 * CHUNK_ARR;
     chunk_arr.flag = RESERVED;
-    strcpy(chunk_arr.name, "CHUNK_ARR");
     chunk_arr.base = base_reg1;
     chunk_arr.addr = ((char *)base_reg1 + size) - chunk_arr.size;
 
@@ -467,14 +421,12 @@ void create_region(heap_t *h, int size)
                     +  3 * CHUNK_INFO_SIZE
                     +  3 * CHUNK_ARR; 
     reg1.n_chunks = 3;
-    sprintf(reg1.name, "HEAP_%d", h->n_regions);
     reg1.base_addr = base_reg1;
     reg1.chunks = chunk_arr.addr;
 
     // Smart ptr for remaining free space
     free_space.size = (size - reg1.used_size);
     free_space.flag = UNALLOCATED;
-    strcpy(free_space.name, "HEAP_FREE");
     free_space.base = base_reg1;
     free_space.addr = (char *)reg_info.addr + REGION_INFO_SIZE + CHUNK_INFO_SIZE;
 
@@ -498,7 +450,6 @@ void create_region(heap_t *h, int size)
     new_free.base = base_reg1;
     new_free.flag = UNALLOCATED;
     new_free.size = (h->regions[0]->chunks[h->regions[0]->n_chunks-1]->size - REGION_ARR);
-    strcpy(new_free.name, h->regions[0]->chunks[h->regions[0]->n_chunks-1]->name);
 
     h->n_regions++;
     h->regions[h->n_regions-1] = (region_t *)(reg_info.addr);
@@ -508,11 +459,6 @@ void create_region(heap_t *h, int size)
 
     h->regions[0]->used_size += REGION_ARR;
     h->regions[0]->chunks[3]->size += REGION_ARR;
-
-    #if LOGGING
-        fprintf(log_file, "\nCREATE_REGION\n");
-        log(h);
-    #endif
 
 exit:
     return;
@@ -546,13 +492,11 @@ inline void cull(heap_t *h, void *ptr)
         new_free.base = h->regions[i]->base_addr;
         new_free.flag = UNALLOCATED;
         new_free.size = h->regions[i]->chunks[j-1]->size + CHUNK_INFO_SIZE + h->regions[i]->chunks[j]->size;
-        strcpy(new_free.name, h->regions[i]->chunks[h->regions[i]->n_chunks-1]->name);
     
         new_chunk.addr = ((char *)h->regions[i]->chunks + CHUNK_ARR);
         new_chunk.base = h->regions[i]->base_addr;
         new_chunk.flag = RESERVED;
         new_chunk.size = h->regions[i]->chunks[0]->size - CHUNK_ARR;
-        strcpy(new_chunk.name, h->regions[i]->chunks[0]->name);
 
         memmove(new_chunk.addr, h->regions[i]->chunks, (j) * CHUNK_ARR);
         h->regions[i]->chunks = (smart_ptr **)new_chunk.addr;
@@ -577,13 +521,11 @@ inline void cull(heap_t *h, void *ptr)
         new_free.base = h->regions[i]->base_addr;
         new_free.flag = UNALLOCATED;
         new_free.size = h->regions[i]->chunks[j+1]->size + CHUNK_INFO_SIZE + h->regions[i]->chunks[j]->size;
-        strcpy(new_free.name, h->regions[i]->chunks[h->regions[i]->n_chunks-1]->name);
     
         new_chunk.addr = ((char *)h->regions[i]->chunks + CHUNK_ARR);
         new_chunk.base = h->regions[i]->base_addr;
         new_chunk.flag = RESERVED;
         new_chunk.size = h->regions[i]->chunks[0]->size - CHUNK_ARR;
-        strcpy(new_chunk.name, h->regions[i]->chunks[0]->name);
 
         memcpy(((char *)new_free.addr - CHUNK_INFO_SIZE), &new_free, CHUNK_INFO_SIZE);
         memmove(new_chunk.addr, h->regions[i]->chunks, (j) * CHUNK_ARR);
@@ -595,12 +537,6 @@ inline void cull(heap_t *h, void *ptr)
         h->regions[i]->n_chunks--;
         h->regions[i]->chunks[h->regions[i]->n_chunks-1]->size += CHUNK_ARR;
     }
-
-
-    #if LOGGING
-        fprintf(log_file, "\nCULL\n");
-        log(h);
-    #endif
 
     return;
 }
@@ -628,7 +564,7 @@ void *change(heap_t *h, void *ptr, int size)
         return NULL;
     }
 
-    new_ptr = alloc(h, size, h->regions[i]->chunks[j]->name);
+    new_ptr = alloc(h, size);
     VALID(new_ptr, MEM_CODE, ALLOCATION_ERROR);
 
     if (size > h->regions[i]->chunks[j]->size) {
@@ -638,11 +574,6 @@ void *change(heap_t *h, void *ptr, int size)
     }
 
     cull(h, ptr);
-
-    #if LOGGING
-        fprintf(log_file, "\nCHANGE\n");
-        log(h);
-    #endif
 
 exit:
     return new_ptr;
