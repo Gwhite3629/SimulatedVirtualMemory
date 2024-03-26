@@ -203,10 +203,6 @@ inline void destroy(heap_t *h)
             }
         }
     }
-
-    #if LOGGING
-        fclose(log_file);
-    #endif
 }
 
 inline heap_t *grow_kheap(heap_t *h)
