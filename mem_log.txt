@@ -1,0 +1,20 @@
+
+CREATE
+--------------------------------------------------------------------------------
+Heap:           global
+
+Region:        KHEAP //   0x56249fc44000 : 4096 : 315 : 5
+
+	       CHUNK_ARR //         RESERVED @ 0x56249fc44fd8 : 40
+	        KREG_PTR //         RESERVED @ 0x56249fc44026 : 38
+	       KHEAP_PTR //         RESERVED @ 0x56249fc44072 : 31
+	         REG_ARR //         RESERVED @ 0x56249fc440b7 : 16
+	      KHEAP_FREE //      UNALLOCATED @ 0x56249fc440ed : 3781
+
+Region:       HEAP_1 //   0x56249fc46000 : 4096 : 176 : 3
+
+	       CHUNK_ARR //         RESERVED @ 0x56249fc46fe8 : 24
+	         REG_PTR //         RESERVED @ 0x56249fc46026 : 38
+	       HEAP_FREE //      UNALLOCATED @ 0x56249fc46072 : 3920
+--------------------------------------------------------------------------------
+

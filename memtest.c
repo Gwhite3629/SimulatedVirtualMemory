@@ -20,6 +20,14 @@ int main(int argc, char *argv[])
     int n_ints = 0;
     int *i_sizes = NULL;
 
+    printf("Some sizes:\n");
+    printf("\tCHUNK_INFO_SIZE:  %lx\n", sizeof(smart_ptr));
+    printf("\tREGION_INFO_SIZE: %lx\n", sizeof(region_t));
+    printf("\tHEAP_INFO_SIZE:   %lx\n", sizeof(heap_t));
+    printf("\tREGION_ARR_SIZE:  %lx\n", sizeof(region_t *));
+    printf("\tCHUNK_ARR_SIZE:   %lx\n", sizeof(smart_ptr *));
+    printf("\tCHAR PTR SIZE:    %lx\n", sizeof(char *));
+
     if (argc < 7) {
 	printf("Correct format:\n\t%s <n_floats> <n_bools> <n_ints> <min_size> <max_size> <n_mixups>\n", argv[0]);
     	return 0;
